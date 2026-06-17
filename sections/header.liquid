@@ -30,26 +30,29 @@
 
     <nav class="nav" aria-label="Primary">
       {%- for block in section.blocks -%}
-        {%- if block.type == 'menu_link' -%}
-          <a href="{{ block.settings.link }}" class="nav__item{% if block.settings.accent %} nav__item--accent{% endif %}"
-             {% if block.settings.new_tab %}target="_blank" rel="noopener"{% endif %}
-             {{ block.shopify_attributes }}>
-            {{ block.settings.label }}
-          </a>
-        {%- elsif block.type == 'menu' -%}
+        {%- if block.type == 'menu' -%}
           {%- assign menu = block.settings.menu -%}
           {%- if menu != blank -%}
-            <div class="nav__menu" {{ block.shopify_attributes }}>
-              <button type="button" class="nav__item nav__menu-trigger" aria-expanded="false">
-                {{ block.settings.label }}
-                {% render 'icon', icon: 'chevron-down', size: 14 %}
-              </button>
-              <div class="nav__submenu" hidden>
-                {%- for link in menu.links -%}
-                  <a href="{{ link.url }}" class="nav__subitem">{{ link.title }}</a>
-                {%- endfor -%}
+            {%- if block.settings.style == 'dropdown' -%}
+              <div class="nav__menu" {{ block.shopify_attributes }}>
+                <button type="button" class="nav__item nav__menu-trigger" aria-expanded="false">
+                  {{ block.settings.label | default: menu.title }}
+                  {% render 'icon', icon: 'chevron-down', size: 14 %}
+                </button>
+                <div class="nav__submenu" hidden>
+                  {%- for link in menu.links -%}
+                    <a href="{{ link.url }}" class="nav__subitem">{{ link.title }}</a>
+                  {%- endfor -%}
+                </div>
               </div>
-            </div>
+            {%- else -%}
+              {%- for link in menu.links -%}
+                <a href="{{ link.url }}" class="nav__item{% if block.settings.accent %} nav__item--accent{% endif %}"
+                   {{ block.shopify_attributes }}>
+                  {{ link.title }}
+                </a>
+              {%- endfor -%}
+            {%- endif -%}
           {%- endif -%}
         {%- endif -%}
       {%- endfor -%}
@@ -89,14 +92,12 @@
     filter: invert(1);
     {%- endif -%}
   }
-  {%- if settings.logo_invert and section.settings.color_scheme == 'inverse' -%}
-  .header .logo--img img { filter: invert(0); }
-  {%- endif -%}
-  @media (max-width: 560px) {
-    .header .logo--img img { height: {{ logo_height_mobile }}px; }
+  @media screen and (max-width: 749px) {
+    .header .logo--img img {
+      height: {{ logo_height_mobile }}px;
+    }
   }
 </style>
-
 {% schema %}
 {
   "name": "Header",
@@ -167,48 +168,35 @@
   ],
   "blocks": [
     {
-      "type": "menu_link",
-      "name": "Menu link",
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Link"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        },
-        {
-          "type": "checkbox",
-          "id": "accent",
-          "label": "Highlight (yellow background)",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "new_tab",
-          "label": "Open in new tab",
-          "default": false
-        }
-      ]
-    },
-    {
       "type": "menu",
-      "name": "Dropdown menu",
+      "name": "Menu",
       "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Trigger label",
-          "default": "Menu"
-        },
         {
           "type": "link_list",
           "id": "menu",
           "label": "Menu"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Display style",
+          "options": [
+            { "value": "inline", "label": "Inline (each link visible)" },
+            { "value": "dropdown", "label": "Dropdown (one trigger)" }
+          ],
+          "default": "inline"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Trigger label (dropdown only)",
+          "info": "If empty, uses the menu's title from Navigation."
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Highlight links (yellow background)",
+          "default": false
         }
       ]
     }
@@ -217,12 +205,13 @@
     {
       "name": "Header",
       "blocks": [
-        { "type": "menu_link", "settings": { "label": "Electric Trikes", "link": "/collections/electric-trikes", "accent": true } },
-        { "type": "menu_link", "settings": { "label": "eBikes", "link": "/collections/ebikes" } },
-        { "type": "menu_link", "settings": { "label": "Accessories", "link": "/collections/accessories" } },
-        { "type": "menu_link", "settings": { "label": "Sale", "link": "/collections/sale" } },
-        { "type": "menu_link", "settings": { "label": "About", "link": "/pages/about-us" } },
-        { "type": "menu_link", "settings": { "label": "Contact", "link": "/pages/contact" } }
+        {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "style": "inline"
+          }
+        }
       ]
     }
   ]

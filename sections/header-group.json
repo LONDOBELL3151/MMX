@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Header group",
   "type": "header",
@@ -6,21 +15,35 @@
       "type": "announcement-bar",
       "settings": {
         "show_bar": true,
-        "message": "Free shipping on orders over $999. UL-certified. Ships from US warehouse.",
-        "link_text": "Learn more",
-        "link_url": "/pages/shipping"
+        "enable_marquee": true,
+        "aria_label": "Announcements",
+        "default_text": "FREE Shipping on All eBikes - Ships from US Warehouse"
       }
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "menu_q3khq8": {
+          "type": "menu",
+          "settings": {
+            "menu": "ebikes-top",
+            "style": "inline",
+            "label": "",
+            "accent": false
+          }
+        }
+      },
+      "block_order": [
+        "menu_q3khq8"
+      ],
       "settings": {
-        "show_announcement": true,
-        "sticky_header": true,
-        "logo_position": "middle-left",
-        "menu_position": "middle-right",
-        "show_cart": true,
         "show_search": true,
-        "show_account": false
+        "show_account": false,
+        "logo_height": 52,
+        "logo_height_mobile": 36,
+        "logo_invert": false,
+        "sticky_header": true,
+        "color_scheme": "default"
       }
     }
   },

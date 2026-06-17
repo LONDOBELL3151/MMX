@@ -28,35 +28,51 @@
   </div>
 </section>
 
-{% schema %}
-{
+{% schema %}{
   "name": "Rider testimonials",
   "tag": "section",
   "class": "section-riders",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Real riders, real rides" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading" }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real riders, real rides"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    }
   ],
   "blocks": [
     {
       "type": "testimonial",
       "name": "Testimonial",
       "settings": [
-        { "type": "textarea", "id": "quote", "label": "Quote" },
-        { "type": "text", "id": "name", "label": "Name", "default": "Sarah K." },
-        { "type": "text", "id": "meta", "label": "Meta", "default": "MF-30 owner, Austin TX" }
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Sarah K."
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta",
+          "default": "MF-30 owner, Austin TX"
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "testimonial", "settings": { "quote": "I've owned 3 e-trikes. The MF-30 is the first that didn't feel like a compromise. It folds, it climbs the hill to my house, and my husband can ride it without complaining.", "name": "Sarah K.", "meta": "MF-30 owner · Austin, TX" } },
-      { "type": "testimonial", "settings": { "quote": "We use the MF-33 to take my mom to the farmers' market every Saturday. She's 74 and rides in the back seat. Last week a stranger stopped us to ask where we got it.", "name": "James & Marie T.", "meta": "MF-33 owners · Portland, OR" } },
-      { "type": "testimonial", "settings": { "quote": "Real customer support. I called at 6pm on a Saturday about a charger issue. A human picked up. Within 20 minutes I had a replacement shipped. That's the whole reason I went MaxFoot.", "name": "David L.", "meta": "MF-25 owner · Brooklyn, NY" } }
-    ]
-  },
   "presets": [
-    { "name": "Rider testimonials" }
+    {
+      "name": "Rider testimonials"
+    }
   ]
-}
-{% endschema %}
+}{% endschema %}

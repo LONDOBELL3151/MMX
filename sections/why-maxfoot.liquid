@@ -30,22 +30,39 @@
   </div>
 </section>
 
-{% schema %}
-{
+{% schema %}{
   "name": "Why MaxFoot pillars",
   "tag": "section",
   "class": "section-why",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Why MaxFoot" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why MaxFoot"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
     {
       "type": "select",
       "id": "columns",
       "label": "Columns",
       "options": [
-        { "value": "2", "label": "2" },
-        { "value": "3", "label": "3" },
-        { "value": "4", "label": "4" }
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
       ],
       "default": "3"
     },
@@ -54,8 +71,14 @@
       "id": "style",
       "label": "Style",
       "options": [
-        { "value": "cards", "label": "Cards (white bg)" },
-        { "value": "dark", "label": "Dark cards" }
+        {
+          "value": "cards",
+          "label": "Cards (white bg)"
+        },
+        {
+          "value": "dark",
+          "label": "Dark cards"
+        }
       ],
       "default": "dark"
     }
@@ -65,23 +88,39 @@
       "type": "pillar",
       "name": "Pillar",
       "settings": [
-        { "type": "text", "id": "number", "label": "Number/label (e.g. 01)", "info": "Leave blank for auto" },
-        { "type": "text", "id": "title", "label": "Title", "default": "UL 2849 Certified" },
-        { "type": "textarea", "id": "text", "label": "Text" },
-        { "type": "text", "id": "link_text", "label": "Link text (optional)" },
-        { "type": "url", "id": "link", "label": "Link" }
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number/label (e.g. 01)",
+          "info": "Leave blank for auto"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "UL 2849 Certified"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text (optional)"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "pillar", "settings": { "number": "01", "title": "UL 2849 Certified", "text": "First US electric trike brand to complete UL 2849 certification. We didn't cut corners on the one thing that matters most.", "link_text": "Read the safety report", "link": "/pages/about-us" } },
-      { "type": "pillar", "settings": { "number": "02", "title": "Built for American families", "text": "Step-thru frames fit riders 5'0\" to 6'4\". Passenger seats hold 2 adults. Tires rated for groceries, kids, and that last hill home.", "link_text": "See the full lineup", "link": "/collections/electric-trikes" } },
-      { "type": "pillar", "settings": { "number": "03", "title": "Real warranty. Real humans.", "text": "2-year bumper-to-bumper warranty handled by our Reno, NV team. No overseas call centers. No bots. Average wait: 8 seconds.", "link_text": "Talk to a human", "link": "/pages/contact" } }
-    ]
-  },
   "presets": [
-    { "name": "Why MaxFoot" }
+    {
+      "name": "Why MaxFoot"
+    }
   ]
-}
-{% endschema %}
+}{% endschema %}

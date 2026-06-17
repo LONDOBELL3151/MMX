@@ -40,16 +40,34 @@
   </div>
 </section>
 
-{% schema %}
-{
+{% schema %}{
   "name": "Product reviews",
   "tag": "section",
   "class": "section-pdp-reviews",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "What owners say" },
-    { "type": "checkbox", "id": "show_load_more", "label": "Show 'See all' button", "default": true },
-    { "type": "text", "id": "load_more_label", "label": "Load more label", "default": "See all reviews" },
-    { "type": "url", "id": "load_more_link", "label": "Load more link" }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What owners say"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_load_more",
+      "label": "Show 'See all' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "load_more_label",
+      "label": "Load more label",
+      "default": "See all reviews"
+    },
+    {
+      "type": "url",
+      "id": "load_more_link",
+      "label": "Load more link"
+    }
   ],
   "blocks": [
     {
@@ -65,22 +83,32 @@
           "step": 1,
           "default": 5
         },
-        { "type": "text", "id": "title", "label": "Review title" },
-        { "type": "textarea", "id": "body", "label": "Review body" },
-        { "type": "text", "id": "author", "label": "Author" },
-        { "type": "text", "id": "meta", "label": "Meta (e.g. Verified · Owner)" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review body"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta (e.g. Verified · Owner)"
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "review", "settings": { "rating": 5, "title": "Game-changer for our family", "body": "My 9-year-old rides on the back seat, my wife uses it for groceries. I get it for weekend trail rides. We've put 800 miles on it in 6 months with zero issues.", "author": "Marcus D.", "meta": "Verified · Owner · Jun 2026" } },
-      { "type": "review", "settings": { "rating": 5, "title": "Best customer service I've experienced", "body": "Had a small issue with the brake lever. Called at 7pm, a human picked up, sent a replacement part next day. Free. This is how every company should work.", "author": "Linda P.", "meta": "Verified · Owner · May 2026" } },
-      { "type": "review", "settings": { "rating": 4, "title": "Great trike, big and sturdy", "body": "Heavier than I expected but that's how it should be for stability. The 4 mph reverse is a lifesaver. Took off one star because the basket is a bit small for grocery runs.", "author": "Tom R.", "meta": "Verified · Owner · Apr 2026" } }
-    ]
-  },
   "presets": [
-    { "name": "Product reviews" }
+    {
+      "name": "Product reviews"
+    }
   ]
-}
-{% endschema %}
+}{% endschema %}

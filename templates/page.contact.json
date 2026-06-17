@@ -1,15 +1,23 @@
 {
   "sections": {
-    "header-group": { "type": "header-group" },
-    "hero": { "type": "page-hero" },
-    "channels": { "type": "contact-channels" },
+    "header-group": {
+      "type": "header"
+    },
+    "hero": {
+      "type": "page-hero"
+    },
+    "channels": {
+      "type": "contact-channels"
+    },
     "form": {
       "type": "contact-form",
       "settings": {
         "show_map": true
       }
     },
-    "footer-group": { "type": "footer-group" }
+    "footer-group": {
+      "type": "footer"
+    }
   },
   "order": [
     "header-group",

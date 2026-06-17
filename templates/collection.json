@@ -1,9 +1,17 @@
 {
   "sections": {
-    "header-group": { "type": "header-group" },
-    "banner": { "type": "collection-banner" },
-    "main": { "type": "main-collection" },
-    "footer-group": { "type": "footer-group" }
+    "header-group": {
+      "type": "header"
+    },
+    "banner": {
+      "type": "collection-banner"
+    },
+    "main": {
+      "type": "main-collection"
+    },
+    "footer-group": {
+      "type": "footer"
+    }
   },
   "order": [
     "header-group",

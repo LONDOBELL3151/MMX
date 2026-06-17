@@ -1,8 +1,14 @@
 {
   "sections": {
-    "header-group": { "type": "header-group" },
-    "main": { "type": "main-page" },
-    "footer-group": { "type": "footer-group" }
+    "header-group": {
+      "type": "header"
+    },
+    "main": {
+      "type": "main-page"
+    },
+    "footer-group": {
+      "type": "footer"
+    }
   },
   "order": [
     "header-group",

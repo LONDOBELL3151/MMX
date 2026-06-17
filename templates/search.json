@@ -1,8 +1,14 @@
 {
   "sections": {
-    "header-group": { "type": "header-group" },
-    "search": { "type": "main-search" },
-    "footer-group": { "type": "footer-group" }
+    "header-group": {
+      "type": "header"
+    },
+    "search": {
+      "type": "main-search"
+    },
+    "footer-group": {
+      "type": "footer"
+    }
   },
   "order": [
     "header-group",

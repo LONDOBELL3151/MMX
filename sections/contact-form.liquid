@@ -81,42 +81,68 @@
   </div>
 </section>
 
-{% schema %}
-{
+{% schema %}{
   "name": "Contact form",
   "tag": "section",
   "class": "section-contact-form",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Form heading", "default": "Send us a message" },
-    { "type": "textarea", "id": "subheading", "label": "Form subheading" },
-    { "type": "text", "id": "hours_heading", "label": "Hours heading", "default": "Support Hours (EST)" },
-    { "type": "richtext", "id": "hours_note", "label": "Hours note" },
-    { "type": "checkbox", "id": "show_map", "label": "Show map embed", "default": true },
-    { "type": "url", "id": "map_url", "label": "Custom map URL" }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Form heading",
+      "default": "Send us a message"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Form subheading"
+    },
+    {
+      "type": "text",
+      "id": "hours_heading",
+      "label": "Hours heading",
+      "default": "Support Hours (EST)"
+    },
+    {
+      "type": "richtext",
+      "id": "hours_note",
+      "label": "Hours note"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_map",
+      "label": "Show map embed",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "map_url",
+      "label": "Custom map URL"
+    }
   ],
   "blocks": [
     {
       "type": "hours_row",
       "name": "Hours row",
       "settings": [
-        { "type": "text", "id": "day", "label": "Day", "default": "Monday" },
-        { "type": "text", "id": "hours", "label": "Hours", "default": "9am – 7pm" }
+        {
+          "type": "text",
+          "id": "day",
+          "label": "Day",
+          "default": "Monday"
+        },
+        {
+          "type": "text",
+          "id": "hours",
+          "label": "Hours",
+          "default": "9am – 7pm"
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "hours_row", "settings": { "day": "Monday", "hours": "9am – 7pm" } },
-      { "type": "hours_row", "settings": { "day": "Tuesday", "hours": "9am – 7pm" } },
-      { "type": "hours_row", "settings": { "day": "Wednesday", "hours": "9am – 7pm" } },
-      { "type": "hours_row", "settings": { "day": "Thursday", "hours": "9am – 7pm" } },
-      { "type": "hours_row", "settings": { "day": "Friday", "hours": "9am – 7pm" } },
-      { "type": "hours_row", "settings": { "day": "Saturday", "hours": "10am – 5pm" } },
-      { "type": "hours_row", "settings": { "day": "Sunday", "hours": "Closed" } }
-    ]
-  },
   "presets": [
-    { "name": "Contact form" }
+    {
+      "name": "Contact form"
+    }
   ]
-}
-{% endschema %}
+}{% endschema %}

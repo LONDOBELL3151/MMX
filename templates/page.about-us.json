@@ -1,13 +1,29 @@
 {
   "sections": {
-    "header-group": { "type": "header-group" },
-    "hero": { "type": "page-hero" },
-    "story": { "type": "story-split" },
-    "stats": { "type": "stats" },
-    "values": { "type": "values-grid" },
-    "timeline": { "type": "timeline" },
-    "cta": { "type": "cta-strip" },
-    "footer-group": { "type": "footer-group" }
+    "header-group": {
+      "type": "header"
+    },
+    "hero": {
+      "type": "page-hero"
+    },
+    "story": {
+      "type": "story-split"
+    },
+    "stats": {
+      "type": "stats"
+    },
+    "values": {
+      "type": "values-grid"
+    },
+    "timeline": {
+      "type": "timeline"
+    },
+    "cta": {
+      "type": "cta-strip"
+    },
+    "footer-group": {
+      "type": "footer"
+    }
   },
   "order": [
     "header-group",

@@ -58,47 +58,78 @@
   </div>
 </aside>
 
-{% schema %}
-{
+{% schema %}{
   "name": "Filter facets",
   "tag": "aside",
   "class": "section-facets",
   "settings": [
-    { "type": "checkbox", "id": "show_clear", "label": "Show 'Clear all' button", "default": true },
-    { "type": "text", "id": "apply_label", "label": "Apply button label", "default": "Apply filters" }
+    {
+      "type": "checkbox",
+      "id": "show_clear",
+      "label": "Show 'Clear all' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "apply_label",
+      "label": "Apply button label",
+      "default": "Apply filters"
+    }
   ],
   "blocks": [
     {
       "type": "filter_group",
       "name": "Filter group",
       "settings": [
-        { "type": "text", "id": "label", "label": "Group label", "default": "Filter" },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Group label",
+          "default": "Filter"
+        },
         {
           "type": "select",
           "id": "type",
           "label": "Filter type",
           "options": [
-            { "value": "checkbox", "label": "Checkbox list" },
-            { "value": "swatch", "label": "Color swatches" },
-            { "value": "price", "label": "Price range" }
+            {
+              "value": "checkbox",
+              "label": "Checkbox list"
+            },
+            {
+              "value": "swatch",
+              "label": "Color swatches"
+            },
+            {
+              "value": "price",
+              "label": "Price range"
+            }
           ],
           "default": "checkbox"
         },
-        { "type": "text", "id": "param", "label": "Filter param key", "default": "tag" },
-        { "type": "textarea", "id": "values", "label": "Values (one per line)", "default": "Value 1\nValue 2" },
-        { "type": "text", "id": "count", "label": "Count label (e.g. 12)" }
+        {
+          "type": "text",
+          "id": "param",
+          "label": "Filter param key",
+          "default": "tag"
+        },
+        {
+          "type": "textarea",
+          "id": "values",
+          "label": "Values (one per line)",
+          "default": "Value 1, Value 2"
+        },
+        {
+          "type": "text",
+          "id": "count",
+          "label": "Count label (e.g. 12)"
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "filter_group", "settings": { "label": "Type", "type": "checkbox", "param": "product.type", "values": "Electric Trike\nFolding eBike\nPassenger Trike", "count": "12" } },
-      { "type": "filter_group", "settings": { "label": "Color", "type": "swatch", "param": "options.color", "values": "Neptune Blue\nSunburst Yellow\nMidnight Black\nPearl White\nForest Green" } },
-      { "type": "filter_group", "settings": { "label": "Price", "type": "price" } }
-    ]
-  },
   "presets": [
-    { "name": "Filter facets" }
+    {
+      "name": "Filter facets"
+    }
   ]
-}
-{% endschema %}
+}{% endschema %}

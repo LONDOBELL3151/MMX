@@ -24,31 +24,61 @@
   </div>
 </section>
 
-{% schema %}
-{
+{% schema %}{
   "name": "Story split",
   "tag": "section",
   "class": "section-story",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading" },
-    { "type": "richtext", "id": "text", "label": "Text" },
-    { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "text", "id": "badge", "label": "Image badge" },
-    { "type": "text", "id": "button_text", "label": "Button text" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Image badge"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
     {
       "type": "select",
       "id": "layout",
       "label": "Image side (desktop)",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     }
   ],
   "presets": [
-    { "name": "Story split" }
+    {
+      "name": "Story split"
+    }
   ]
-}
-{% endschema %}
+}{% endschema %}

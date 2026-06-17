@@ -26,36 +26,50 @@
   </div>
 </section>
 
-{% schema %}
-{
+{% schema %}{
   "name": "Timeline",
   "tag": "section",
   "class": "section-timeline",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "A decade of building" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading" }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A decade of building"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    }
   ],
   "blocks": [
     {
       "type": "milestone",
       "name": "Milestone",
       "settings": [
-        { "type": "text", "id": "year", "label": "Year/Date", "default": "2016" },
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "textarea", "id": "text", "label": "Text" }
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year/Date",
+          "default": "2016"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "milestone", "settings": { "year": "2016", "title": "First trike built in a Reno garage.", "text": "For a 67-year-old who couldn't ride a regular e-bike. We didn't plan to start a company — we just couldn't find her one." } },
-      { "type": "milestone", "settings": { "year": "'20", "title": "UL 2849 certified.", "text": "First US e-trike brand to complete the certification. Our battery lab is in-house. Every cell tested individually before assembly." } },
-      { "type": "milestone", "settings": { "year": "'22", "title": "Moved into our Reno HQ.", "text": "40,000 sq ft. Walk the floor any weekday and you'll meet the engineers who built your trike's controller." } },
-      { "type": "milestone", "settings": { "year": "'26", "title": "50,000 riders and counting.", "text": "A decade of listening to riders, then building what they actually need. Same owners, same Reno phone number, same warranty." } }
-    ]
-  },
   "presets": [
-    { "name": "Timeline" }
+    {
+      "name": "Timeline"
+    }
   ]
-}
-{% endschema %}
+}{% endschema %}

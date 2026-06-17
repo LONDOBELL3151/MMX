@@ -1,7 +1,7 @@
 {
   "sections": {
     "header-group": {
-      "type": "header-group",
+      "type": "header",
       "settings": {
         "show_announcement": true
       }
@@ -9,9 +9,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "breadcrumbs": { "type": "breadcrumbs" }
+        "breadcrumbs": {
+          "type": "breadcrumbs"
+        }
       },
-      "block_order": ["breadcrumbs"]
+      "block_order": [
+        "breadcrumbs"
+      ]
     },
     "features": {
       "type": "pdp-features",
@@ -38,7 +42,7 @@
       "type": "pdp-recent"
     },
     "footer-group": {
-      "type": "footer-group"
+      "type": "footer"
     }
   },
   "order": [

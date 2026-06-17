@@ -1,14 +1,20 @@
 {
   "sections": {
-    "header-group": { "type": "header-group" },
+    "header-group": {
+      "type": "header"
+    },
     "hero": {
       "type": "hero",
       "settings": {
         "image_position": "right"
       }
     },
-    "proof": { "type": "proof-bar" },
-    "trust": { "type": "trust-badges" },
+    "proof": {
+      "type": "proof-bar"
+    },
+    "trust": {
+      "type": "trust-badges"
+    },
     "lineup": {
       "type": "featured-collection",
       "settings": {
@@ -46,7 +52,9 @@
     "newsletter": {
       "type": "newsletter"
     },
-    "footer-group": { "type": "footer-group" }
+    "footer-group": {
+      "type": "footer"
+    }
   },
   "order": [
     "header-group",

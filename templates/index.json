@@ -72,6 +72,28 @@
     },
     "trust": {
       "type": "trust-badges",
+      "blocks": {
+        "item_ykiikQ": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "subtitle": "To all 48 Contiguous States in the United States"
+          }
+        },
+        "item_tWBFrC": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "2-Year Warranty",
+            "subtitle": "Motor, battery, frame. US-based support team."
+          }
+        }
+      },
+      "block_order": [
+        "item_ykiikQ",
+        "item_tWBFrC"
+      ],
       "settings": {
         "bg_color": "#f7f7f5"
       }

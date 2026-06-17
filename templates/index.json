@@ -73,6 +73,22 @@
     "trust": {
       "type": "trust-badges",
       "blocks": {
+        "item_cTLYK9": {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "title": "Buy Now, Pay Later",
+            "subtitle": "Interest-Free Financing Available via Shop Pay"
+          }
+        },
+        "item_wnddY9": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure Checkout",
+            "subtitle": "SSL Encrypted Checkout | 100% Secure Payment"
+          }
+        },
         "item_ykiikQ": {
           "type": "item",
           "settings": {
@@ -91,6 +107,8 @@
         }
       },
       "block_order": [
+        "item_cTLYK9",
+        "item_wnddY9",
         "item_ykiikQ",
         "item_tWBFrC"
       ],

@@ -16,7 +16,14 @@
     </div>
     <div class="story__copy">
       <h2 class="section__title">{{ s.heading | default: 'We started because no one else would.' }}</h2>
-      <div class="story__text">{{ s.text | default: '<p>It started with a 67-year-old who couldn\'t ride a regular e-bike anymore. Her daughter called every major brand. None would build a trike that was safe enough for a senior — without cutting corners on battery, frame, or suspension.</p><p>We built the first MaxFoot in our Reno garage in 2016. UL-certified from day one. We\'ve never compromised.</p>' }}</div>
+      <div class="story__text">
+        {% if s.text != blank %}
+          {{ s.text }}
+        {% else %}
+          <p>It started with a 67-year-old who couldn't ride a regular e-bike anymore. Her daughter called every major brand. None would build a trike that was safe enough for a senior - without cutting corners on battery, frame, or suspension.</p>
+          <p>We built the first MaxFoot in our Reno garage in 2016. UL-certified from day one. We've never compromised.</p>
+        {% endif %}
+      </div>
       {%- if s.button_text != blank -%}
         <a href="{{ s.button_link }}" class="btn btn--primary">{{ s.button_text }} {% render 'icon', icon: 'arrow-right' %}</a>
       {%- endif -%}

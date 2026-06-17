@@ -1,0 +1,36 @@
+{
+  "current": {
+    "color_primary": "#121212",
+    "color_accent": "#FFC000",
+    "color_accent_dark": "#E6AC00",
+    "color_bg": "#FFFFFF",
+    "color_bg_soft": "#F7F7F5",
+    "color_text": "#1A1A1A",
+    "color_text_soft": "#6A6A6A",
+    "color_border": "#E5E5E5",
+    "color_success": "#1F7A4D",
+    "color_danger": "#C83A3A",
+    "font_display": "Big Shoulders Display",
+    "font_body": "Inter Tight",
+    "font_mono": "JetBrains Mono",
+    "font_size_base": 16,
+    "page_width": 1440,
+    "section_padding_y": 80,
+    "border_radius": 8,
+    "logo_height": 52,
+    "logo_height_mobile": 36,
+    "logo_invert": false,
+    "currency_code_enabled": true,
+    "cart_type_drawer": false,
+    "free_shipping_threshold": "299",
+    "free_shipping_message": "Add {amount} more for FREE shipping!",
+    "enable_animations": true,
+    "enable_marquee": true
+  },
+  "presets": {
+    "Default": {
+      "color_primary": "#121212",
+      "color_accent": "#FFC000"
+    }
+  }
+}

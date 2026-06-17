@@ -1,0 +1,89 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="newsletter" {{ section.shopify_attributes }}>
+  <div class="container newsletter__grid">
+    <div class="newsletter__copy">
+      <h2 class="newsletter__title">
+        {%- if s.title != blank -%}
+          {{ s.title }}
+        {%- else -%}
+          SEE DEALS FIRST
+        {%- endif -%}
+      </h2>
+      {%- if s.subtitle != blank -%}
+        <p class="newsletter__sub">{{ s.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    {% form 'customer', id: 'newsletter-' | append: section.id, class: 'newsletter__form' %}
+      <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+      {%- if s.show_first_name -%}
+        <input type="text" name="contact[first_name]" placeholder="First name" autocomplete="given-name">
+      {%- endif -%}
+      <input type="email" name="contact[email]" placeholder="{{ s.placeholder | default: 'Your email' }}" required>
+      <button type="submit" class="btn btn--primary">
+        {{ s.button_label | default: 'Subscribe' }}
+      </button>
+      {%- if s.disclaimer -%}
+        <p class="newsletter__disclaimer">{{ s.disclaimer }}</p>
+      {%- endif -%}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "class": "section-newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "SEE DEALS FIRST"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "$50 OFF your first order + exclusive deals before they hit the site."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_first_name",
+      "label": "Show first name input",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email placeholder",
+      "default": "Your email"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Subscribe"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "<p>We respect your inbox. Unsubscribe anytime.</p>"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFC000"
+    }
+  ],
+  "presets": [
+    { "name": "Newsletter" }
+  ]
+}
+{% endschema %}

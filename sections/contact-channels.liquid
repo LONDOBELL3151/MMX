@@ -1,0 +1,103 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="contact-channels" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">{{ s.heading | default: 'How to reach us' }}</h2>
+      {%- if s.subheading != blank -%}
+        <p class="section__sub">{{ s.subheading }}</p>
+      {%- endif -%}
+    </div>
+    <div class="channels">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'channel' -%}
+          {%- if block.settings.featured -%}
+            <a href="{{ block.settings.link }}" class="channel channel--featured" {{ block.shopify_attributes }}>
+              <div class="channel__icon">
+                {%- case block.settings.type -%}
+                  {%- when 'phone' -%}{% render 'icon', icon: 'phone', size: 28 %}
+                  {%- when 'email' -%}{% render 'icon', icon: 'mail', size: 28 %}
+                  {%- when 'chat' -%}{% render 'icon', icon: 'chat', size: 28 %}
+                  {%- when 'clock' -%}{% render 'icon', icon: 'clock', size: 28 %}
+                  {%- else -%}{% render 'icon', icon: 'phone', size: 28 %}
+                {%- endcase -%}
+              </div>
+              <div style="flex:1">
+                <div class="channel__title">{{ block.settings.title }}</div>
+                <div class="channel__sub">{{ block.settings.subtitle }}</div>
+              </div>
+              <span class="channel__cta">{{ block.settings.cta | default: 'Contact' }}</span>
+            </a>
+          {%- else -%}
+            <a href="{{ block.settings.link }}" class="channel" {{ block.shopify_attributes }}>
+              <div class="channel__icon">
+                {%- case block.settings.type -%}
+                  {%- when 'phone' -%}{% render 'icon', icon: 'phone', size: 24 %}
+                  {%- when 'email' -%}{% render 'icon', icon: 'mail', size: 24 %}
+                  {%- when 'chat' -%}{% render 'icon', icon: 'chat', size: 24 %}
+                  {%- when 'clock' -%}{% render 'icon', icon: 'clock', size: 24 %}
+                  {%- else -%}{% render 'icon', icon: 'phone', size: 24 %}
+                {%- endcase -%}
+              </div>
+              <div style="flex:1">
+                <div class="channel__title">{{ block.settings.title }}</div>
+                <div class="channel__sub">{{ block.settings.subtitle }}</div>
+              </div>
+              <span class="channel__cta" style="color:var(--color-primary)">{{ block.settings.cta | default: 'Open' }} {% render 'icon', icon: 'arrow-right', size: 14 %}</span>
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact channels",
+  "tag": "section",
+  "class": "section-contact-channels",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How to reach us" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" }
+  ],
+  "blocks": [
+    {
+      "type": "channel",
+      "name": "Channel",
+      "settings": [
+        {
+          "type": "select",
+          "id": "type",
+          "label": "Channel type",
+          "options": [
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "chat", "label": "Live Chat" },
+            { "value": "clock", "label": "Hours" }
+          ],
+          "default": "phone"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Call Us" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "1-866-MAXFOOT" },
+        { "type": "text", "id": "cta", "label": "CTA label", "default": "Call Now" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "featured", "label": "Featured (yellow bg)", "default": false }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "channel", "settings": { "type": "phone", "title": "Call Us: 1-866-MAXFOOT", "subtitle": "Mon–Sat · 9am–7pm EST · Avg pick-up: 8 sec", "cta": "Call Now", "link": "tel:18666296348", "featured": true } },
+      { "type": "channel", "settings": { "type": "email", "title": "Email Support", "subtitle": "support@maxfoot.bike · Reply within 4 hrs", "cta": "Email", "link": "mailto:support@maxfoot.bike" } },
+      { "type": "channel", "settings": { "type": "chat", "title": "Live Chat", "subtitle": "Mon–Sat · 9am–7pm EST · Avg first response: 30 sec", "cta": "Start chat", "link": "#" } },
+      { "type": "channel", "settings": { "type": "clock", "title": "Support Hours (EST)", "subtitle": "Mon–Fri 9am–7pm · Sat 10am–5pm · Sun closed", "cta": "View hours", "link": "#hours" } }
+    ]
+  },
+  "presets": [
+    { "name": "Contact channels" }
+  ]
+}
+{% endschema %}

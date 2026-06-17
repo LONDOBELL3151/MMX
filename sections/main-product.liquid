@@ -1,0 +1,180 @@
+{%- liquid
+  assign s = section.settings
+  assign product = s.product | default: closest.product
+-%}
+
+<section class="section pdp-gallery" {{ section.shopify_attributes }}>
+  <div class="container pdp__grid">
+    <div class="pdp__media">
+      {% render 'product-media' %}
+    </div>
+
+    <div class="pdp__info">
+      <div class="pdp__category">{{ product.type | default: 'Electric Trike' }}</div>
+      <h1 class="pdp__title">{{ product.title }}</h1>
+
+      {%- if product.metafields.reviews.rating -%}
+        <div class="pdp__rating">
+          {% render 'stars', rating: product.metafields.reviews.rating %}
+          <span class="pdp__rating-text">{{ product.metafields.reviews.rating }} ({{ product.metafields.reviews.rating_count }} reviews)</span>
+        </div>
+      {%- else -%}
+        <div class="pdp__rating">
+          {% render 'stars', rating: 4.8 %}
+          <span class="pdp__rating-text">4.8 (412 reviews)</span>
+        </div>
+      {%- endif -%}
+
+      {% render 'price' %}
+
+      {%- if s.show_stock -%}
+        <div class="pdp__stock">
+          {% render 'icon', icon: 'check', size: 14 %}
+          <strong>In stock</strong> &mdash; {{ s.stock_count | default: 24 }} available
+          &mdash; Ships within 2 business days
+        </div>
+      {%- endif -%}
+
+      {%- if product.options.size > 0 -%}
+        <form method="post" action="{{ routes.cart_add_url }}" id="pdp__form" enctype="multipart/form-data" class="pdp__form">
+          <input type="hidden" name="id" data-product-id>
+          {%- for option in product.options_with_values -%}
+            <div class="pdp__option">
+              <label class="pdp__option-label">
+                {{ option.name }}:
+                <strong data-selected-option="{{ forloop.index0 }}">{{ option.selected_value }}</strong>
+              </label>
+              {%- if option.name == 'Color' -%}
+                <div class="pdp__swatches">
+                  {%- for value in option.values -%}
+                    {%- assign variant = nil -%}
+                    {%- for v in product.variants -%}
+                      {%- if v.option1 == value -%}
+                        {%- assign variant = v -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                    <label class="swatch" data-swatch="{{ value | handleize }}">
+                      <input type="radio" name="options[{{ option.name | downcase }}]" value="{{ value }}" {% if option.selected_value == value %}checked{% endif %} data-variant-id="{{ variant.id | default: '' }}" data-option-index="{{ forloop.index0 }}">
+                      <span class="swatch__color" style="background:{{ value | downcase | handleize }};{% if value == 'White' or value == 'white' %}border:1px solid #ccc{% endif %}">
+                        {{ value }}
+                      </span>
+                      <span class="swatch__label">{{ value }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                <select name="options[{{ option.name | downcase }}]" class="pdp__select" data-option-index="{{ forloop.index0 }}">
+                  {%- for value in option.values -%}
+                    <option value="{{ value }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                  {%- endfor -%}
+                </select>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+
+          <div class="pdp__qty-row">
+            <div class="pdp__qty">
+              <button type="button" data-qty="dec" aria-label="Decrease">{% render 'icon', icon: 'minus' %}</button>
+              <input type="number" name="quantity" value="1" min="1" data-qty-input>
+              <button type="button" data-qty="inc" aria-label="Increase">{% render 'icon', icon: 'plus' %}</button>
+            </div>
+            <button type="submit" name="add" class="btn btn--primary pdp__cta"{% unless product.available %} disabled{% endunless %}>
+              {%- if product.available -%}
+                Add to Cart &mdash; {{ product.price | money }}
+              {%- else -%}
+                Sold Out
+              {%- endif -%}
+            </button>
+          </div>
+        </form>
+      {%- else -%}
+        {% form 'product', product, id: 'pdp__form' %}
+          <div class="pdp__qty-row">
+            <div class="pdp__qty">
+              <button type="button" data-qty="dec">{% render 'icon', icon: 'minus' %}</button>
+              <input type="number" name="quantity" value="1" min="1">
+              <button type="button" data-qty="inc">{% render 'icon', icon: 'plus' %}</button>
+            </div>
+            <button type="submit" class="btn btn--primary pdp__cta">Add to Cart &mdash; {{ product.price | money }}</button>
+          </div>
+        {% endform %}
+      {%- endif -%}
+
+      {%- if s.show_finance -%}
+        <div class="pdp__finance">
+          Or <strong>4 payments of {{ product.price | divided_by: 4 | money }}</strong>
+          &mdash; <a href="{{ s.finance_link | default: '#' }}">{{ s.finance_label | default: 'Affirm financing' }}</a>
+        </div>
+      {%- endif -%}
+
+      {%- if s.show_extras -%}
+        <div class="pdp__extras">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'extra' -%}
+              <div class="pdp__extra" {{ block.shopify_attributes }}>
+                <span class="pdp__extra-icon">
+                  {%- case block.settings.icon -%}
+                    {%- when 'truck' -%}{% render 'icon', icon: 'truck', size: 20 %}
+                    {%- when 'shield' -%}{% render 'icon', icon: 'shield', size: 20 %}
+                    {%- when 'calendar' -%}{% render 'icon', icon: 'calendar', size: 20 %}
+                    {%- when 'phone' -%}{% render 'icon', icon: 'phone', size: 20 %}
+                    {%- else -%}{% render 'icon', icon: 'check', size: 20 %}
+                  {%- endcase -%}
+                </span>
+                <strong>{{ block.settings.title }}</strong>
+                <span class="pdp__extra-sub">{{ block.settings.subtitle }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product main",
+  "tag": "section",
+  "class": "section-pdp-main",
+  "settings": [
+    { "type": "checkbox", "id": "show_stock", "label": "Show stock status", "default": true },
+    { "type": "text", "id": "stock_count", "label": "Stock count" },
+    { "type": "checkbox", "id": "show_finance", "label": "Show financing line", "default": true },
+    { "type": "text", "id": "finance_label", "label": "Finance label", "default": "Affirm financing" },
+    { "type": "url", "id": "finance_link", "label": "Finance link" },
+    { "type": "checkbox", "id": "show_extras", "label": "Show extras (free shipping, etc.)", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "extra",
+      "name": "Extra",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Truck" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "calendar", "label": "Calendar" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "check", "label": "Check" }
+          ],
+          "default": "truck"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Free Shipping" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Ships within 2 business days" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "extra", "settings": { "icon": "truck", "title": "Free Shipping", "subtitle": "Ships within 2 business days" } },
+      { "type": "extra", "settings": { "icon": "shield", "title": "2-Year Warranty", "subtitle": "Full bumper-to-bumper coverage" } },
+      { "type": "extra", "settings": { "icon": "phone", "title": "US Support", "subtitle": "Reno, NV team · 1-866-MAXFOOT" } }
+    ]
+  }
+}
+{% endschema %}

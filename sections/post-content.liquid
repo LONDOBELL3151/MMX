@@ -1,0 +1,36 @@
+{%- liquid
+  assign article = article | default: closest.article
+-%}
+
+<section class="post-content section" {{ section.shopify_attributes }}>
+  <div class="container post-content__inner">
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" class="post-content__hero" loading="eager">
+    {%- endif -%}
+
+    <div class="post-content__body rte">
+      {{ article.content }}
+    </div>
+
+    {%- if article.tags.size > 0 -%}
+      <div class="post-content__tags">
+        <strong>Tags:</strong>
+        {%- for tag in article.tags -%}
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="tag">{{ tag }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Post content",
+  "tag": "section",
+  "class": "section-post-content",
+  "settings": [],
+  "presets": [
+    { "name": "Post content" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,104 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<aside class="facets" id="Facets" {{ section.shopify_attributes }}>
+  <form id="FacetFiltersForm" class="facets__form" action="{{ routes.url_for_collection }}" method="get">
+    {%- if s.show_clear -%}
+      <div class="facets__clear">
+        <a href="{{ collection.url }}?sort_by={{ sort_by }}">Clear all</a>
+      </div>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'filter_group' -%}
+        <details class="facets__group" open {{ block.shopify_attributes }}>
+          <summary class="facets__title">{{ block.settings.label }}</summary>
+          <div class="facets__list-wrap">
+            {%- case block.settings.type -%}
+              {%- when 'checkbox' -%}
+                <ul class="facets__list">
+                  {%- assign values = block.settings.values | newline_to_br | split: '<br />' -%}
+                  {%- for v in values -%}
+                    <li>
+                      <label>
+                        <input type="checkbox" name="filter.p.{{ block.settings.param }}" value="{{ v | handleize }}" {% if current_tags contains v %}checked{% endif %}>
+                        <span>{{ v }}</span>
+                        <span class="facets__count">({{ block.settings.count }})</span>
+                      </label>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- when 'price' -%}
+                <div class="facets__price">
+                  <input type="number" name="filter.v.price.gte" placeholder="Min $" value="{{ min_price | default: 500 }}">
+                  <span>—</span>
+                  <input type="number" name="filter.v.price.lte" placeholder="Max $" value="{{ max_price | default: 5000 }}">
+                  <button type="submit" class="btn btn--sm">Apply</button>
+                </div>
+              {%- when 'swatch' -%}
+                <div class="facets__swatches">
+                  {%- assign values = block.settings.values | newline_to_br | split: '<br />' -%}
+                  {%- for v in values -%}
+                    <label class="facets__swatch" title="{{ v }}">
+                      <input type="checkbox" name="filter.p.{{ block.settings.param }}" value="{{ v | handleize }}">
+                      <span style="background:{{ v | handleize }};{% if v == 'white' or v == 'White' %}border:1px solid #ccc{% endif %}"></span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+            {%- endcase -%}
+          </div>
+        </details>
+      {%- endif -%}
+    {%- endfor -%}
+  </form>
+
+  <div class="facets__mobile-actions">
+    <button type="button" class="btn btn--primary btn--block" data-mobile-filters-close>{{ s.apply_label | default: 'Apply filters' }}</button>
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Filter facets",
+  "tag": "aside",
+  "class": "section-facets",
+  "settings": [
+    { "type": "checkbox", "id": "show_clear", "label": "Show 'Clear all' button", "default": true },
+    { "type": "text", "id": "apply_label", "label": "Apply button label", "default": "Apply filters" }
+  ],
+  "blocks": [
+    {
+      "type": "filter_group",
+      "name": "Filter group",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Group label", "default": "Filter" },
+        {
+          "type": "select",
+          "id": "type",
+          "label": "Filter type",
+          "options": [
+            { "value": "checkbox", "label": "Checkbox list" },
+            { "value": "swatch", "label": "Color swatches" },
+            { "value": "price", "label": "Price range" }
+          ],
+          "default": "checkbox"
+        },
+        { "type": "text", "id": "param", "label": "Filter param key", "default": "tag" },
+        { "type": "textarea", "id": "values", "label": "Values (one per line)", "default": "Value 1\nValue 2" },
+        { "type": "text", "id": "count", "label": "Count label (e.g. 12)" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "filter_group", "settings": { "label": "Type", "type": "checkbox", "param": "product.type", "values": "Electric Trike\nFolding eBike\nPassenger Trike", "count": "12" } },
+      { "type": "filter_group", "settings": { "label": "Color", "type": "swatch", "param": "options.color", "values": "Neptune Blue\nSunburst Yellow\nMidnight Black\nPearl White\nForest Green" } },
+      { "type": "filter_group", "settings": { "label": "Price", "type": "price" } }
+    ]
+  },
+  "presets": [
+    { "name": "Filter facets" }
+  ]
+}
+{% endschema %}

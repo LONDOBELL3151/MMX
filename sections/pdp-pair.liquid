@@ -1,0 +1,51 @@
+{%- liquid
+  assign s = section.settings
+  assign product = closest.product
+  assign collection = collections[s.collection]
+-%}
+
+<section class="section pdp-pair" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">{{ s.heading | default: 'Complete the ride' }}</h2>
+      {%- if s.subheading != blank -%}
+        <p class="section__sub">{{ s.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if collection != blank and collection.products.size > 0 -%}
+      <div class="products products--grid products--4">
+        {%- for product in collection.products limit: s.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="pdp-pair__empty">Select a "Pairs with" collection in the section settings to display related products.</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pairs with",
+  "tag": "section",
+  "class": "section-pdp-pair",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Complete the ride" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    { "name": "Pairs with" }
+  ]
+}
+{% endschema %}

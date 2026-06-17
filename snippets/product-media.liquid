@@ -1,0 +1,35 @@
+<div class="product__media" data-product-media>
+  {%- if product.featured_image -%}
+    <img id="ProductMainImg"
+         src="{{ product.featured_image | image_url: width: 1500 }}"
+         srcset="{{ product.featured_image | image_url: width: 800 }} 800w,
+                 {{ product.featured_image | image_url: width: 1200 }} 1200w,
+                 {{ product.featured_image | image_url: width: 1500 }} 1500w,
+                 {{ product.featured_image | image_url: width: 2000 }} 2000w"
+         sizes="(min-width: 990px) 600px, 100vw"
+         alt="{{ product.featured_image.alt | default: product.title | escape }}"
+         loading="eager"
+         width="1500"
+         height="1500">
+  {%- else -%}
+    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+</div>
+
+{%- if product.images.size > 1 -%}
+  <div class="product-thumbs" role="tablist">
+    {%- for image in product.images -%}
+      <button type="button"
+              class="product-thumb{% if forloop.first %} is-active{% endif %}"
+              data-thumb-src="{{ image | image_url: width: 1500 }}"
+              data-thumb-index="{{ forloop.index0 }}"
+              aria-label="View image {{ forloop.index }}">
+        <img src="{{ image | image_url: width: 200 }}"
+             alt="{{ image.alt | default: product.title | escape }}"
+             loading="lazy"
+             width="200"
+             height="200">
+      </button>
+    {%- endfor -%}
+  </div>
+{%- endif -%}

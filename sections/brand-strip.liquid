@@ -1,0 +1,48 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section brand-strip" {{ section.shopify_attributes }}>
+  <div class="container brand-strip__inner">
+    {%- if s.heading != blank -%}
+      <h3 class="brand-strip__heading">{{ s.heading }}</h3>
+    {%- endif -%}
+    <div class="brand-strip__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'logo' -%}
+          <div class="brand-strip__logo" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 240 }}" alt="{{ block.settings.name | escape }}" loading="lazy">
+            {%- else -%}
+              <span>{{ block.settings.name }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand strip",
+  "tag": "section",
+  "class": "section-brand-strip",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo image" },
+        { "type": "text", "id": "name", "label": "Name (shown if no image)" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Brand strip" }
+  ]
+}
+{% endschema %}

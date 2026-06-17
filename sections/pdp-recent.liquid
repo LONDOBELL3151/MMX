@@ -1,0 +1,26 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section pdp-recent" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">{{ s.heading | default: 'Recently viewed' }}</h2>
+    </div>
+    <p class="pdp-recent__placeholder">Recently viewed products will appear here once a customer has browsed the store.</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recently viewed",
+  "tag": "section",
+  "class": "section-pdp-recent",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Recently viewed" }
+  ],
+  "presets": [
+    { "name": "Recently viewed" }
+  ]
+}
+{% endschema %}

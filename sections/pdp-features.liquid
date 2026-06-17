@@ -1,0 +1,75 @@
+{%- liquid
+  assign s = section.settings
+  assign product = closest.product
+-%}
+
+<section class="section pdp-features" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="pdp-layout">
+      <div class="pdp__extras">
+        <h3>{{ s.heading | default: 'At a Glance' }}</h3>
+        <ul>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'spec' -%}
+              <li>
+                <span class="pdp__spec-label">{{ block.settings.label }}</span>
+                <strong>{{ block.settings.value }}</strong>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      {%- if s.show_story -%}
+        <div class="pdp__story">
+          {%- if s.story_title != blank -%}
+            <h3>{{ s.story_title }}</h3>
+          {%- endif -%}
+          {%- if s.story_text != blank -%}
+            <p>{{ s.story_text }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product features",
+  "tag": "section",
+  "class": "section-pdp-features",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "At a Glance" },
+    { "type": "checkbox", "id": "show_story", "label": "Show story column", "default": true },
+    { "type": "text", "id": "story_title", "label": "Story title" },
+    { "type": "textarea", "id": "story_text", "label": "Story text" }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Motor" },
+        { "type": "text", "id": "value", "label": "Value", "default": "750W" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "spec", "settings": { "label": "Motor", "value": "750W (1100W peak)" } },
+      { "type": "spec", "settings": { "label": "Battery", "value": "48V 20Ah Samsung" } },
+      { "type": "spec", "settings": { "label": "Range", "value": "Up to 85 mi" } },
+      { "type": "spec", "settings": { "label": "Top Speed", "value": "20 mph" } },
+      { "type": "spec", "settings": { "label": "Payload", "value": "500 lb" } },
+      { "type": "spec", "settings": { "label": "Tires", "value": "20\" × 4\" Fat Tire" } },
+      { "type": "spec", "settings": { "label": "Brakes", "value": "Dual Disc" } },
+      { "type": "spec", "settings": { "label": "Frame", "value": "Step-Thru Aluminum" } },
+      { "type": "spec", "settings": { "label": "Weight", "value": "92 lb" } },
+      { "type": "spec", "settings": { "label": "Rider Height", "value": "5'0\" – 6'4\"" } },
+      { "type": "spec", "settings": { "label": "Warranty", "value": "2 Years" } },
+      { "type": "spec", "settings": { "label": "Cert", "value": "UL 2849" } }
+    ]
+  }
+}
+{% endschema %}

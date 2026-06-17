@@ -1,0 +1,49 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section section--values" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="values-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'value' -%}
+          <article class="value-card" {{ block.shopify_attributes }}>
+            <div class="value-card__num">{{ block.settings.number | default: forloop.index }}</div>
+            <h3 class="value-card__title">{{ block.settings.title }}</h3>
+            <p class="value-card__text">{{ block.settings.text }}</p>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Values grid",
+  "tag": "section",
+  "class": "section-values",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number/label (e.g. 01)" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "value", "settings": { "number": "01", "title": "Safety isn't negotiable.", "text": "Every battery is UL 2849 certified. Every cable is double-shielded. Every controller has 6 layers of fault protection. We build for the rider who's riding to visit their grandchild — not the reviewer chasing a thumbnail." } },
+      { "type": "value", "settings": { "number": "02", "title": "Built for American families.", "text": "Step-thru frames fit 5'0\" to 6'4\". Passenger seats for grandparents. Racks for groceries. We're not chasing the spec sheet trophy — we're chasing the kid who smiles when Mom picks her up in one." } },
+      { "type": "value", "settings": { "number": "03", "title": "No bots. No offshore scripts.", "text": "Our support team is in Reno, NV. Same timezone as you. They ride what they sell. Average wait: 8 seconds. Average resolution: same call." } }
+    ]
+  },
+  "presets": [
+    { "name": "Values" }
+  ]
+}
+{% endschema %}

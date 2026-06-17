@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "header-group": { "type": "header-group" },
+    "search": { "type": "main-search" },
+    "footer-group": { "type": "footer-group" }
+  },
+  "order": [
+    "header-group",
+    "search",
+    "footer-group"
+  ]
+}

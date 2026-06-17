@@ -1,0 +1,22 @@
+{%- liquid
+  assign s = section.settings
+  assign product = s.product | default: closest.product
+-%}
+
+<section class="section breadcrumbs-section" {{ section.shopify_attributes }}>
+  <div class="container">
+    {% render 'breadcrumbs' %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Breadcrumbs",
+  "tag": "section",
+  "class": "section-breadcrumbs",
+  "settings": [],
+  "presets": [
+    { "name": "Breadcrumbs" }
+  ]
+}
+{% endschema %}

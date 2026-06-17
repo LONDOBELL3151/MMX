@@ -1,0 +1,68 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section rich-text" {{ section.shopify_attributes }}>
+  <div class="container rich-text__inner" style="max-width:{{ s.width }}px;text-align:{{ s.align }}">
+    {%- if s.eyebrow != blank -%}
+      <span class="rich-text__eyebrow">{{ s.eyebrow }}</span>
+    {%- endif -%}
+    {%- if s.title != blank -%}
+      <h2 class="section__title">{{ s.title }}</h2>
+    {%- endif -%}
+    {%- if s.text != blank -%}
+      <div class="rich-text__text">{{ s.text }}</div>
+    {%- endif -%}
+    {%- if s.button_text != blank -%}
+      <a href="{{ s.button_link }}" class="btn btn--primary">{{ s.button_text }} {% render 'icon', icon: 'arrow-right' %}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "tag": "section",
+  "class": "section-rich-text",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "title", "label": "Title" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_text", "label": "Button text" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Max width",
+      "min": 480,
+      "max": 1200,
+      "step": 40,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "bg",
+      "label": "Background",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "soft", "label": "Soft" }
+      ],
+      "default": "white"
+    }
+  ],
+  "presets": [
+    { "name": "Rich text" }
+  ]
+}
+{% endschema %}

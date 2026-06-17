@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "header-group": { "type": "header-group" },
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "image_position": "right"
+      }
+    },
+    "proof": { "type": "proof-bar" },
+    "trust": { "type": "trust-badges" },
+    "lineup": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "The lineup",
+        "subheading": "Three trikes built for three kinds of families.",
+        "products_to_show": 3,
+        "columns": "3",
+        "show_view_all": true
+      }
+    },
+    "why": {
+      "type": "why-maxfoot",
+      "settings": {
+        "heading": "Why MaxFoot"
+      }
+    },
+    "press": {
+      "type": "press-quote"
+    },
+    "riders": {
+      "type": "rider-testimonials",
+      "settings": {
+        "heading": "Real riders, real rides"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Before you buy"
+      }
+    },
+    "cta": {
+      "type": "cta-strip"
+    },
+    "newsletter": {
+      "type": "newsletter"
+    },
+    "footer-group": { "type": "footer-group" }
+  },
+  "order": [
+    "header-group",
+    "hero",
+    "proof",
+    "trust",
+    "lineup",
+    "why",
+    "press",
+    "riders",
+    "faq",
+    "cta",
+    "newsletter",
+    "footer-group"
+  ]
+}

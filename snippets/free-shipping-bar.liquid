@@ -1,0 +1,30 @@
+{%- liquid
+  assign cart = cart
+  assign threshold = settings.free_shipping_threshold | times: 100
+  assign progress = cart.total_price | times: 100 | divided_by: threshold
+  if progress > 100
+    assign progress = 100
+  endif
+  assign remaining = threshold | minus: cart.total_price
+  if remaining < 0
+    assign remaining = 0
+  endif
+-%}
+
+<div class="ship-bar" data-threshold="{{ threshold }}" data-current="{{ cart.total_price }}">
+  <div class="ship-bar__icon">{% render 'icon', icon: 'truck' %}</div>
+  <div class="ship-bar__content">
+    {%- if remaining > 0 -%}
+      <div class="ship-bar__text">
+        Add <strong>{{ remaining | money }}</strong> more for <strong>FREE shipping!</strong>
+      </div>
+    {%- else -%}
+      <div class="ship-bar__text">
+        <strong>You qualified for FREE shipping!</strong>
+      </div>
+    {%- endif -%}
+    <div class="ship-bar__progress">
+      <div class="ship-bar__progress-fill" style="width: {{ progress }}%"></div>
+    </div>
+  </div>
+</div>

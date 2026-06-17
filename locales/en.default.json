@@ -1,0 +1,80 @@
+{
+  "general": {
+    "search": "Search",
+    "menu": "Menu",
+    "home": "Home",
+    "share": "Share",
+    "currency": "USD",
+    "language": "Language",
+    "currency_label": "Currency",
+    "skip_to_text": "Skip to content",
+    "load_more": "Load more",
+    "loading": "Loading...",
+    "no_results": "No results found",
+    "electric_bike": "Electric Bike"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity"
+    },
+    "facets": {
+      "sort_by": "Sort by",
+      "featured": "Featured",
+      "best_selling": "Best selling",
+      "az": "Alphabetically, A-Z",
+      "za": "Alphabetically, Z-A",
+      "price_asc": "Price: Low to High",
+      "price_desc": "Price: High to Low",
+      "date_desc": "Date, New to Old",
+      "date_asc": "Date, Old to New"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue shopping",
+      "close_cart": "Close cart",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Estimated tax",
+      "total": "Total",
+      "coupon": "Discount code",
+      "checkout": "Checkout",
+      "order_summary": "Order Summary",
+      "update": "Update"
+    },
+    "labels": {
+      "qty": "Quantity"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Account",
+      "details": "Account details",
+      "logout": "Log out"
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "cart_count": "{{ count }} items"
+    },
+    "cart": {
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue shopping"
+    }
+  },
+  "accessibility": {
+    "close": "Close",
+    "menu": "Menu",
+    "search": "Search",
+    "cart": "Cart",
+    "pagination": "Pagination",
+    "slider": "Slider",
+    "skip_to_text": "Skip to text"
+  }
+}

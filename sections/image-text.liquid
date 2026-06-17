@@ -1,0 +1,60 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section image-text" {{ section.shopify_attributes }}>
+  <div class="container image-text__grid image-text--{{ s.layout }}">
+    <div class="image-text__media">
+      {%- if s.image != blank -%}
+        <img src="{{ s.image | image_url: width: 1200 }}" srcset="{{ s.image | image_url: width: 800 }} 800w, {{ s.image | image_url: width: 1200 }} 1200w" sizes="(min-width: 990px) 50vw, 100vw" alt="{{ s.image.alt | default: s.title | escape }}" loading="lazy">
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+      {%- if s.badge != blank -%}
+        <div class="image-text__badge">{{ s.badge }}</div>
+      {%- endif -%}
+    </div>
+    <div class="image-text__copy">
+      {%- if s.eyebrow != blank -%}
+        <span class="image-text__eyebrow">{{ s.eyebrow }}</span>
+      {%- endif -%}
+      <h2 class="section__title">{{ s.title }}</h2>
+      {%- if s.text != blank -%}
+        <p class="image-text__text">{{ s.text }}</p>
+      {%- endif -%}
+      {%- if s.button_text != blank -%}
+        <a href="{{ s.button_link }}" class="btn btn--primary">{{ s.button_text }} {% render 'icon', icon: 'arrow-right' %}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text",
+  "tag": "section",
+  "class": "section-image-text",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "title", "label": "Title" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_text", "label": "Button text" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "badge", "label": "Badge (overlays image)" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout (desktop)",
+      "options": [
+        { "value": "image-right", "label": "Image right" },
+        { "value": "image-left", "label": "Image left" }
+      ],
+      "default": "image-right"
+    }
+  ],
+  "presets": [
+    { "name": "Image with text" }
+  ]
+}
+{% endschema %}

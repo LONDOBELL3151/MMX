@@ -1,0 +1,55 @@
+<div id="CartDrawer" class="cart-drawer" data-cart-drawer aria-hidden="true">
+  <div class="cart-drawer__overlay" data-cart-drawer-close></div>
+  <div class="cart-drawer__panel" role="dialog" aria-modal="true" aria-label="Cart">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">{{ 'cart.general.title' | t: default: 'Your Cart' }} (<span data-cart-count>{{ cart.item_count }}</span>)</h2>
+      <button type="button" class="cart-drawer__close" data-cart-drawer-close aria-label="{{ 'cart.general.close_cart' | t: default: 'Close cart' }}">
+        {% render 'icon', icon: 'close' %}
+      </button>
+    </div>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="cart-drawer__empty">
+        <p>{{ 'cart.general.empty' | t: default: 'Your cart is empty' }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">
+          {{ 'cart.general.continue_shopping' | t: default: 'Continue shopping' }}
+        </a>
+      </div>
+    {%- else -%}
+      <div class="cart-drawer__items" data-cart-items>
+        {%- for item in cart.items -%}
+          <div class="cart-drawer__item" data-line="{{ forloop.index }}">
+            <a href="{{ item.url }}" class="cart-drawer__img">
+              {%- if item.image -%}
+                <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" loading="lazy">
+              {%- endif -%}
+            </a>
+            <div class="cart-drawer__info">
+              <a href="{{ item.url }}" class="cart-drawer__name">{{ item.product.title }}</a>
+              {%- unless item.product_has_only_default_variant -%}
+                <div class="cart-drawer__variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="cart-drawer__price">{{ item.final_line_price | money }}</div>
+            </div>
+            <div class="cart-drawer__qty">
+              <button data-qty="dec" data-line="{{ forloop.index }}">{% render 'icon', icon: 'minus' %}</button>
+              <input type="number" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}" data-cart-qty>
+              <button data-qty="inc" data-line="{{ forloop.index }}">{% render 'icon', icon: 'plus' %}</button>
+            </div>
+            <button class="cart-drawer__remove" data-remove="{{ forloop.index }}" aria-label="Remove">{% render 'icon', icon: 'trash' %}</button>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal">
+          <span>{{ 'cart.general.subtotal' | t: default: 'Subtotal' }}</span>
+          <strong>{{ cart.total_price | money }}</strong>
+        </div>
+        <button type="submit" name="checkout" class="btn btn--primary btn--block">
+          {{ 'cart.general.checkout' | t: default: 'Checkout' }}
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

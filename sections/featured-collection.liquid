@@ -1,0 +1,123 @@
+{%- liquid
+  assign s = section.settings
+  assign collection = s.collection
+-%}
+
+<section class="section section--lineup" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">{{ s.heading | default: 'The lineup' }}</h2>
+      {%- if s.subheading != blank -%}
+        <p class="section__sub">{{ s.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if collection != blank and collection.products.size > 0 -%}
+      <div class="products products--grid products--{{ s.columns | default: 3 }}">
+        {%- for product in collection.products limit: s.products_to_show -%}
+          {% render 'product-card', product: product, show_specs: true %}
+        {%- endfor -%}
+      </div>
+      {%- if s.show_view_all -%}
+        <div class="section__cta">
+          <a href="{{ collection.url }}" class="btn btn--outline btn--lg">{{ s.view_all_label | default: 'View all' }} {% render 'icon', icon: 'arrow-right' %}</a>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <div class="products products--grid products--{{ s.columns | default: 3 }}">
+        {%- for i in (1..s.products_to_show) -%}
+          {% render 'product-card', card_product_handle: s.placeholder_product_handles | split: ',' | at: i | default: blank %}
+        {%- endfor -%}
+      </div>
+      {%- if s.show_view_all -%}
+        <div class="section__cta">
+          <a href="{{ routes.collections_url }}/all" class="btn btn--outline btn--lg">{{ s.view_all_label | default: 'View all' }} {% render 'icon', icon: 'arrow-right' %}</a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "tag": "section",
+  "class": "section-featured-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The lineup"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "View all"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_product_handles",
+      "label": "Placeholder handles (comma-separated)",
+      "info": "Used when no collection selected. For demo only."
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "select",
+      "id": "bg",
+      "label": "Background",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "soft", "label": "Soft" },
+        { "value": "dark", "label": "Dark" }
+      ],
+      "default": "white"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}

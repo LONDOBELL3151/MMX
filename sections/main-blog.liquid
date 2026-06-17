@@ -1,0 +1,70 @@
+{%- liquid
+  assign s = section.settings
+  assign blog = blogs[s.blog] | default: blogs['news']
+-%}
+
+<section class="main-blog section" {{ section.shopify_attributes }}>
+  <div class="container">
+    {%- if blog.articles.size == 0 -%}
+      <div class="blog-empty">
+        <h2>No posts yet.</h2>
+        <p>Check back soon, or follow us on <a href="{{ settings.social_instagram }}">Instagram</a> for updates.</p>
+      </div>
+    {%- else -%}
+      {%- assign featured = blog.articles.first -%}
+      <div class="blog-grid">
+        <article class="post-card post-card--featured" data-post-id="{{ featured.id }}">
+          <a href="{{ featured.url }}" class="post-card__link">
+            <div class="post-card__media"{% if featured.image %} style="background-image:url({{ featured.image | image_url: width: 1200 }})"{% endif %}>
+              <span class="post-card__cat">{{ featured.tags | first | default: 'Buying Guide' }}</span>
+            </div>
+          </a>
+          <div class="post-card__body">
+            <div class="post-card__meta">
+              <span>{{ featured.tags | first | default: 'Buying Guide' }}</span>
+              <span class="post-card__dot"></span>
+              <span>{{ featured.content | strip_html | split: ' ' | size | divided_by: 200 | at_least: 1 }} min read</span>
+              <span class="post-card__dot"></span>
+              <span>{{ featured.published_at | date: '%b %d, %Y' }}</span>
+            </div>
+            <h2 class="post-card__title"><a href="{{ featured.url }}">{{ featured.title }}</a></h2>
+            <p class="post-card__excerpt">{{ featured.excerpt | default: featured.content | strip_html | truncatewords: 40 }}</p>
+            <a href="{{ featured.url }}" class="post-card__cta">Read the guide {% render 'icon', icon: 'arrow-right' %}</a>
+          </div>
+        </article>
+
+        {%- for article in blog.articles offset: 1 limit: 4 -%}
+          {% render 'post-card', post: article %}
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pagination">
+          <a href="{{ paginate.previous.url }}" class="pagination__prev{% unless paginate.previous %} is-disabled{% endunless %}">{% render 'icon', icon: 'chevron-left' %} Prev</a>
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}
+              <a href="{{ part.url }}" class="pagination__page">{{ part.title }}</a>
+            {%- else -%}
+              <span class="pagination__page{% if part.title == paginate.current_page %} is-current{% endif %}">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endfor -%}
+          <a href="{{ paginate.next.url }}" class="pagination__next{% unless paginate.next %} is-disabled{% endunless %}">Next {% render 'icon', icon: 'chevron-right' %}</a>
+        </nav>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "tag": "section",
+  "class": "section-blog-posts",
+  "settings": [
+    { "type": "blog", "id": "blog", "label": "Blog" }
+  ],
+  "presets": [
+    { "name": "Blog posts" }
+  ]
+}
+{% endschema %}

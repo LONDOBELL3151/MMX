@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "header-group": {
+      "type": "header-group",
+      "settings": {
+        "show_announcement": true
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs": { "type": "breadcrumbs" }
+      },
+      "block_order": ["breadcrumbs"]
+    },
+    "features": {
+      "type": "pdp-features",
+      "settings": {
+        "show_story": true
+      }
+    },
+    "accordions": {
+      "type": "pdp-accordions"
+    },
+    "compare": {
+      "type": "comparison-table"
+    },
+    "pair": {
+      "type": "pdp-pair"
+    },
+    "reviews": {
+      "type": "pdp-reviews",
+      "settings": {
+        "show_load_more": true
+      }
+    },
+    "recent": {
+      "type": "pdp-recent"
+    },
+    "footer-group": {
+      "type": "footer-group"
+    }
+  },
+  "order": [
+    "header-group",
+    "main",
+    "features",
+    "accordions",
+    "compare",
+    "pair",
+    "reviews",
+    "recent",
+    "footer-group"
+  ]
+}

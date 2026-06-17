@@ -1,0 +1,16 @@
+{%- liquid
+  assign enable_actions = enable_actions | default: true
+-%}
+
+<div class="pdp__price">
+  {%- if product.compare_at_price > product.price -%}
+    <span class="pdp__price-current">{{ product.price | money }}</span>
+    <span class="pdp__price-compare">{{ product.compare_at_price | money }}</span>
+    <span class="pdp__price-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
+  {%- else -%}
+    <span class="pdp__price-current">{{ product.price | money }}</span>
+  {%- endif -%}
+  {%- if product.available == false -%}
+    <span class="pdp__price-soldout">Sold Out</span>
+  {%- endif -%}
+</div>

@@ -1,0 +1,37 @@
+{%- liquid
+  assign s = section.settings
+  assign article = article | default: closest.article
+-%}
+
+<section class="post-header section" {{ section.shopify_attributes }}>
+  <div class="container post-header__inner">
+    <span class="post-header__cat">{{ article.tags | first | default: 'Buying Guide' }}</span>
+    <h1 class="post-header__title">{{ article.title }}</h1>
+    <div class="post-header__meta">
+      <div class="post-header__author">
+        {%- if article.user -%}
+          <span>By {{ article.user.name }}</span>
+        {%- endif -%}
+        <span class="post-header__dot">·</span>
+        <span>{{ article.published_at | date: '%b %d, %Y' }}</span>
+        <span class="post-header__dot">·</span>
+        <span>{{ article.content | strip_html | split: ' ' | size | divided_by: 200 | at_least: 1 }} min read</span>
+      </div>
+      <div class="post-header__share">
+        {% render 'share-buttons' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Post header",
+  "tag": "section",
+  "class": "section-post-header",
+  "settings": [],
+  "presets": [
+    { "name": "Post header" }
+  ]
+}
+{% endschema %}

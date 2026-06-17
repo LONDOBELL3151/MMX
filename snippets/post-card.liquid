@@ -1,0 +1,31 @@
+<article class="post-card{% if post.tags contains 'featured' %} post-card--featured{% endif %}" data-post-id="{{ post.id }}">
+  <a href="{{ post.url }}" class="post-card__link">
+    <div class="post-card__media"{% if post.image %} style="background-image:url({{ post.image | image_url: width: 800 }})"{% endif %}>
+      <span class="post-card__cat">{{ post.tags | first | default: 'Article' }}</span>
+    </div>
+  </a>
+
+  <div class="post-card__body">
+    <div class="post-card__meta">
+      <span>{{ post.tags | first | default: 'Article' }}</span>
+      <span class="post-card__dot"></span>
+      <span>{{ post.content | strip_html | split: ' ' | size | divided_by: 200 | at_least: 1 }} min read</span>
+      <span class="post-card__dot"></span>
+      <span>{{ post.published_at | date: '%b %d' }}</span>
+    </div>
+
+    <h3 class="post-card__title">
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </h3>
+
+    <p class="post-card__excerpt">
+      {%- if post.excerpt != blank -%}
+        {{ post.excerpt | strip_html | truncatewords: 30 }}
+      {%- else -%}
+        {{ post.content | strip_html | truncatewords: 30 }}
+      {%- endif -%}
+    </p>
+
+    <a href="{{ post.url }}" class="post-card__cta">Read More</a>
+  </div>
+</article>

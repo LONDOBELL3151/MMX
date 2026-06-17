@@ -1,0 +1,42 @@
+{%- liquid
+  assign s = section.settings
+  assign article = article | default: closest.article
+-%}
+
+<section class="post-author-card section" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="post-author">
+      <div class="post-author__avatar">
+        {%- if article.user and article.user.image -%}
+          <img src="{{ article.user.image | image_url: width: 200 }}" alt="{{ article.user.name | escape }}" loading="lazy">
+        {%- else -%}
+          <span>{{ article.author | default: 'MF' | slice: 0, 2 | upcase }}</span>
+        {%- endif -%}
+      </div>
+      <div class="post-author__meta">
+        <div class="post-author__name">
+          {{ article.user.name | default: article.author | default: 'MaxFoot Editorial' }}
+        </div>
+        <div class="post-author__stat">{{ s.article_count | default: 7 }} articles</div>
+        {%- if s.show_social -%}
+          <a href="#" class="post-header__author-link" aria-label="LinkedIn">in</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Post author",
+  "tag": "section",
+  "class": "section-post-author",
+  "settings": [
+    { "type": "checkbox", "id": "show_social", "label": "Show social link", "default": true },
+    { "type": "text", "id": "article_count", "label": "Article count", "default": "7" }
+  ],
+  "presets": [
+    { "name": "Post author" }
+  ]
+}
+{% endschema %}

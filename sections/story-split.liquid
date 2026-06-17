@@ -1,0 +1,54 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section section--story" {{ section.shopify_attributes }}>
+  <div class="container story-grid">
+    <div class="story__media">
+      {%- if s.image != blank -%}
+        <img src="{{ s.image | image_url: width: 1200 }}" srcset="{{ s.image | image_url: width: 800 }} 800w, {{ s.image | image_url: width: 1200 }} 1200w" sizes="(min-width: 990px) 50vw, 100vw" alt="{{ s.image.alt | default: s.title | escape }}" loading="lazy">
+      {%- else -%}
+        <div class="story__placeholder">{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      {%- endif -%}
+      {%- if s.badge != blank -%}
+        <div class="story__badge">{{ s.badge }}</div>
+      {%- endif -%}
+    </div>
+    <div class="story__copy">
+      <h2 class="section__title">{{ s.heading | default: 'We started because no one else would.' }}</h2>
+      <div class="story__text">{{ s.text | default: '<p>It started with a 67-year-old who couldn\'t ride a regular e-bike anymore. Her daughter called every major brand. None would build a trike that was safe enough for a senior — without cutting corners on battery, frame, or suspension.</p><p>We built the first MaxFoot in our Reno garage in 2016. UL-certified from day one. We\'ve never compromised.</p>' }}</div>
+      {%- if s.button_text != blank -%}
+        <a href="{{ s.button_link }}" class="btn btn--primary">{{ s.button_text }} {% render 'icon', icon: 'arrow-right' %}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story split",
+  "tag": "section",
+  "class": "section-story",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "badge", "label": "Image badge" },
+    { "type": "text", "id": "button_text", "label": "Button text" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image side (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    { "name": "Story split" }
+  ]
+}
+{% endschema %}

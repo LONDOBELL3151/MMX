@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "header-group": { "type": "header-group" },
+    "hero": { "type": "page-hero" },
+    "story": { "type": "story-split" },
+    "stats": { "type": "stats" },
+    "values": { "type": "values-grid" },
+    "timeline": { "type": "timeline" },
+    "cta": { "type": "cta-strip" },
+    "footer-group": { "type": "footer-group" }
+  },
+  "order": [
+    "header-group",
+    "hero",
+    "story",
+    "stats",
+    "values",
+    "timeline",
+    "cta",
+    "footer-group"
+  ]
+}

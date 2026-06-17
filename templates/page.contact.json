@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "header-group": { "type": "header-group" },
+    "hero": { "type": "page-hero" },
+    "channels": { "type": "contact-channels" },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "show_map": true
+      }
+    },
+    "footer-group": { "type": "footer-group" }
+  },
+  "order": [
+    "header-group",
+    "hero",
+    "channels",
+    "form",
+    "footer-group"
+  ]
+}

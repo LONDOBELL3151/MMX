@@ -1,0 +1,102 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section section--comparisons" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">{{ s.heading | default: 'How MF-30 stacks up' }}</h2>
+      {%- if s.subheading != blank -%}
+        <p class="section__sub">{{ s.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Spec</th>
+            <th class="is-current">{{ s.col1_label | default: 'MaxFoot MF-30' }}</th>
+            <th>{{ s.col2_label | default: 'Industry Avg.' }}</th>
+            <th>{{ s.col3_label | default: 'Premium Trike' }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'row' -%}
+              <tr{% if block.settings.zebra %} class="is-current"{% endif %} {{ block.shopify_attributes }}>
+                <td><strong>{{ block.settings.spec }}</strong></td>
+                <td class="yes">
+                  {%- if block.settings.value1 != blank -%}{{ block.settings.value1 }}{%- endif -%}
+                </td>
+                <td class="{% if block.settings.value2 == 'no' %}no{% else %}yes{% endif %}">
+                  {%- if block.settings.value2 == 'no' -%}—{%- elsif block.settings.value2_text != blank -%}{{ block.settings.value2_text }}{%- endif -%}
+                </td>
+                <td class="yes">
+                  {%- if block.settings.value3 != blank -%}{{ block.settings.value3 }}{%- endif -%}
+                </td>
+              </tr>
+            {%- endif -%}
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+    {%- if s.disclaimer != blank -%}
+      <p class="compare-disclaimer">{{ s.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison table",
+  "tag": "section",
+  "class": "section-comparison-table",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How MF-30 stacks up" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "col1_label", "label": "Column 1 label", "default": "MaxFoot MF-30" },
+    { "type": "text", "id": "col2_label", "label": "Column 2 label", "default": "Industry Avg." },
+    { "type": "text", "id": "col3_label", "label": "Column 3 label", "default": "Premium Trike" },
+    { "type": "richtext", "id": "disclaimer", "label": "Disclaimer text" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "spec", "label": "Spec name", "default": "Top Speed" },
+        { "type": "text", "id": "value1", "label": "Value (column 1)" },
+        {
+          "type": "select",
+          "id": "value2",
+          "label": "Column 2 (yes or no)",
+          "options": [
+            { "value": "yes", "label": "Yes (has value)" },
+            { "value": "no", "label": "No (dash)" }
+          ],
+          "default": "yes"
+        },
+        { "type": "text", "id": "value2_text", "label": "Column 2 text (if yes)" },
+        { "type": "text", "id": "value3", "label": "Value (column 3)" },
+        { "type": "checkbox", "id": "zebra", "label": "Zebra stripe", "default": false }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "row", "settings": { "spec": "Top Speed", "value1": "20 mph", "value2": "yes", "value2_text": "15 mph", "value3": "20 mph" } },
+      { "type": "row", "settings": { "spec": "Range", "value1": "Up to 85 mi", "value2": "yes", "value2_text": "30 mi", "value3": "60 mi", "zebra": true } },
+      { "type": "row", "settings": { "spec": "Payload", "value1": "500 lb", "value2": "yes", "value2_text": "300 lb", "value3": "350 lb" } },
+      { "type": "row", "settings": { "spec": "Motor", "value1": "750W (1100W peak)", "value2": "yes", "value2_text": "500W", "value3": "750W", "zebra": true } },
+      { "type": "row", "settings": { "spec": "Front Suspension", "value1": "50mm travel", "value2": "no", "value3": "Premium fork" } },
+      { "type": "row", "settings": { "spec": "UL Certification", "value1": "UL 2849", "value2": "yes", "value2_text": "Partial", "value3": "UL 2849", "zebra": true } },
+      { "type": "row", "settings": { "spec": "Warranty", "value1": "2 years", "value2": "yes", "value2_text": "1 year", "value3": "2 years" } },
+      { "type": "row", "settings": { "spec": "Sale Price", "value1": "$1,999", "value2": "yes", "value2_text": "$1,800+", "value3": "$3,499", "zebra": true } }
+    ]
+  },
+  "presets": [
+    { "name": "Comparison table" }
+  ]
+}
+{% endschema %}

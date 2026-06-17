@@ -1,0 +1,17 @@
+<article class="post-card post-card--related" data-post-id="{{ post.id }}">
+  <a href="{{ post.url }}" class="post-card__link">
+    <div class="post-card__media"{% if post.image %} style="background-image:url({{ post.image | image_url: width: 600 }})"{% endif %}>
+      <span class="post-card__cat">{{ post.tags | first | default: 'Article' }}</span>
+    </div>
+  </a>
+
+  <div class="post-card__body">
+    <div class="post-card__meta">
+      <span>{{ post.content | strip_html | split: ' ' | size | divided_by: 200 | at_least: 1 }} min read</span>
+    </div>
+    <h3 class="post-card__title">
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </h3>
+    <a href="{{ post.url }}" class="post-card__cta">Read More</a>
+  </div>
+</article>

@@ -1,0 +1,75 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="error-404 section" {{ section.shopify_attributes }}>
+  <div class="container error-404__inner">
+    <div class="error-404__badge">{{ '404' }}</div>
+    <h1 class="error-404__title">{{ s.heading | default: "Lost the trail?" }}</h1>
+    <p class="error-404__sub">{{ s.subtitle | default: "The page you're looking for doesn't exist or has been moved. We've got you back on track below." }}</p>
+
+    <form action="{{ routes.search_url }}" method="get" class="error-404__search" role="search">
+      <input type="search" name="q" placeholder="{{ s.search_placeholder | default: 'Search MaxFoot...' }}" aria-label="Search">
+      <button type="submit" class="btn btn--primary">Search</button>
+    </form>
+
+    <div class="error-404__cta">
+      <a href="{{ routes.root_url }}" class="btn btn--primary btn--lg">{{ s.home_label | default: '← Back to Home' }}</a>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline btn--lg">Shop All eBikes</a>
+    </div>
+
+    {%- if s.show_shortcuts -%}
+      <div class="err404__shortcuts">
+        <h3>{{ s.shortcuts_heading | default: 'Or jump to a popular page' }}</h3>
+        <div class="err404__shortcuts-grid">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'shortcut' -%}
+              <a href="{{ block.settings.link }}" class="err404__shortcut" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404 page",
+  "tag": "section",
+  "class": "section-404",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Lost the trail?" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle" },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder" },
+    { "type": "text", "id": "home_label", "label": "Home button label", "default": "← Back to Home" },
+    { "type": "checkbox", "id": "show_shortcuts", "label": "Show popular pages", "default": true },
+    { "type": "text", "id": "shortcuts_heading", "label": "Shortcuts heading", "default": "Or jump to a popular page" }
+  ],
+  "blocks": [
+    {
+      "type": "shortcut",
+      "name": "Shortcut",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Electric Trikes" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "shortcut", "settings": { "label": "Electric Trikes", "link": "/collections/electric-trikes" } },
+      { "type": "shortcut", "settings": { "label": "Step-Thru eBikes", "link": "/collections/ebikes" } },
+      { "type": "shortcut", "settings": { "label": "Accessories", "link": "/collections/accessories" } },
+      { "type": "shortcut", "settings": { "label": "Sale", "link": "/collections/sale" } },
+      { "type": "shortcut", "settings": { "label": "About Us", "link": "/pages/about-us" } },
+      { "type": "shortcut", "settings": { "label": "Contact", "link": "/pages/contact" } },
+      { "type": "shortcut", "settings": { "label": "MF-30 Trike", "link": "/products/mf-30" } },
+      { "type": "shortcut", "settings": { "label": "MF-33 Passenger Trike", "link": "/products/mf-33" } }
+    ]
+  },
+  "presets": [
+    { "name": "404 page" }
+  ]
+}
+{% endschema %}

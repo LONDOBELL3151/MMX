@@ -1,0 +1,227 @@
+{%- liquid
+  assign s = section.settings
+  assign logo_height = s.logo_height | default: settings.logo_height | default: 52
+  assign logo_height_mobile = s.logo_height_mobile | default: settings.logo_height_mobile | default: 36
+-%}
+
+<header class="header" role="banner" {{ section.shopify_attributes }}>
+  <div class="container header__inner">
+    <a href="{{ routes.root_url }}" class="logo logo--img" aria-label="{{ shop.name | escape }} home">
+      {%- if s.logo != blank -%}
+        <img src="{{ s.logo | image_url: width: 600 }}"
+             srcset="{{ s.logo | image_url: width: 300 }} 300w, {{ s.logo | image_url: width: 600 }} 600w"
+             sizes="(max-width: 560px) {{ logo_height_mobile }}px, {{ logo_height }}px"
+             alt="{{ s.logo.alt | default: shop.name | escape }}"
+             loading="eager"
+             width="{{ logo_height | times: 3 }}"
+             height="{{ logo_height }}">
+      {%- elsif settings.logo != blank -%}
+        <img src="{{ settings.logo | image_url: width: 600 }}"
+             srcset="{{ settings.logo | image_url: width: 300 }} 300w, {{ settings.logo | image_url: width: 600 }} 600w"
+             sizes="(max-width: 560px) {{ logo_height_mobile }}px, {{ logo_height }}px"
+             alt="{{ settings.logo.alt | default: shop.name | escape }}"
+             loading="eager"
+             width="{{ logo_height | times: 3 }}"
+             height="{{ logo_height }}">
+      {%- else -%}
+        <span class="logo__text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'menu_link' -%}
+          <a href="{{ block.settings.link }}" class="nav__item{% if block.settings.accent %} nav__item--accent{% endif %}"
+             {% if block.settings.new_tab %}target="_blank" rel="noopener"{% endif %}
+             {{ block.shopify_attributes }}>
+            {{ block.settings.label }}
+          </a>
+        {%- elsif block.type == 'menu' -%}
+          {%- assign menu = block.settings.menu -%}
+          {%- if menu != blank -%}
+            <div class="nav__menu" {{ block.shopify_attributes }}>
+              <button type="button" class="nav__item nav__menu-trigger" aria-expanded="false">
+                {{ block.settings.label }}
+                {% render 'icon', icon: 'chevron-down', size: 14 %}
+              </button>
+              <div class="nav__submenu" hidden>
+                {%- for link in menu.links -%}
+                  <a href="{{ link.url }}" class="nav__subitem">{{ link.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__actions">
+      <button type="button" class="icon-btn menu-toggle" aria-label="Open menu" data-mobile-menu-toggle>
+        {% render 'icon', icon: 'menu' %}
+      </button>
+
+      {%- if s.show_search -%}
+        <button type="button" class="icon-btn" aria-label="Search" data-search-toggle>
+          {% render 'icon', icon: 'search' %}
+        </button>
+      {%- endif -%}
+
+      {%- if s.show_account -%}
+        <a href="{{ routes.account_url }}" class="icon-btn" aria-label="Account">
+          {% render 'icon', icon: 'user' %}
+        </a>
+      {%- endif -%}
+
+      <a href="{{ routes.cart_url }}" class="cart-btn" aria-label="Cart, {{ cart.item_count }} items" data-cart-count-wrap>
+        {% render 'icon', icon: 'cart' %}
+        <span>Cart (<span data-cart-count>{{ cart.item_count }}</span>)</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header .logo--img img {
+    height: {{ logo_height }}px;
+    width: auto;
+    display: block;
+    {%- if settings.logo_invert or s.logo_invert -%}
+    filter: invert(1);
+    {%- endif -%}
+  }
+  {%- if settings.logo_invert and section.settings.color_scheme == 'inverse' -%}
+  .header .logo--img img { filter: invert(0); }
+  {%- endif -%}
+  @media (max-width: 560px) {
+    .header .logo--img img { height: {{ logo_height_mobile }}px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "section",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account icon",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Override logo image (leave blank to use theme setting)"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Override logo height (px)",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "logo_height_mobile",
+      "label": "Override mobile logo height (px)",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "logo_invert",
+      "label": "Invert this header's logo",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Sticky behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Sticky header",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "default", "label": "Default (light)" },
+        { "value": "inverse", "label": "Inverse (dark)" }
+      ],
+      "default": "default"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_link",
+      "name": "Menu link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Highlight (yellow background)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Dropdown menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Trigger label",
+          "default": "Menu"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "menu_link", "settings": { "label": "Electric Trikes", "link": "/collections/electric-trikes", "accent": true } },
+      { "type": "menu_link", "settings": { "label": "eBikes", "link": "/collections/ebikes" } },
+      { "type": "menu_link", "settings": { "label": "Accessories", "link": "/collections/accessories" } },
+      { "type": "menu_link", "settings": { "label": "Sale", "link": "/collections/sale" } },
+      { "type": "menu_link", "settings": { "label": "About", "link": "/pages/about-us" } },
+      { "type": "menu_link", "settings": { "label": "Contact", "link": "/pages/contact" } }
+    ]
+  }
+}
+{% endschema %}

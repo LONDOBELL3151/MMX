@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "header-group": { "type": "header-group" },
+    "main": { "type": "main-page" },
+    "footer-group": { "type": "footer-group" }
+  },
+  "order": [
+    "header-group",
+    "main",
+    "footer-group"
+  ]
+}

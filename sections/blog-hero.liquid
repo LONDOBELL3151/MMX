@@ -1,0 +1,38 @@
+{%- liquid
+  assign s = section.settings
+  assign blog = blogs[s.blog] | default: blogs['news']
+-%}
+
+<section class="blog-hero section" {{ section.shopify_attributes }}>
+  <div class="container">
+    {%- if s.eyebrow != blank -%}
+      <span class="blog-hero__eyebrow">{{ s.eyebrow }}</span>
+    {%- endif -%}
+    <h1 class="blog-hero__title">
+      {%- if s.title != blank -%}
+        {{ s.title }}
+      {%- else -%}
+        {{ blog.title }}
+      {%- endif -%}
+    </h1>
+    {%- if s.subtitle != blank -%}
+      <p class="blog-hero__sub">{{ s.subtitle }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog hero",
+  "tag": "section",
+  "class": "section-blog-hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The MaxFoot Journal" },
+    { "type": "text", "id": "title", "label": "Title" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Real stories from real riders. Buying guides, maintenance tips, family adventures — written by people who actually own a MaxFoot." }
+  ],
+  "presets": [
+    { "name": "Blog hero" }
+  ]
+}
+{% endschema %}

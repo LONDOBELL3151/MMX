@@ -1,0 +1,96 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="main-collection" id="MainCollection" {{ section.shopify_attributes }}>
+  <div class="container collection-grid">
+    <div class="main-collection__sidebar">
+      {% sections 'facets' %}
+    </div>
+
+    <div class="main-collection__main">
+      <div class="collection-toolbar">
+        <button type="button" class="collection-toolbar__mobile-trigger" data-mobile-filters-open>
+          {% render 'icon', icon: 'menu', size: 18 %}
+          Filters
+          {%- if current_tags.size > 0 -%}
+            <span class="collection-toolbar__count">{{ current_tags.size }}</span>
+          {%- endif -%}
+        </button>
+
+        <div class="collection-toolbar__count">
+          <strong>{{ paginate.items }}</strong> products
+        </div>
+
+        <div class="collection-toolbar__sort">
+          <label for="SortBy">{{ 'products.facets.sort_by' | t: default: 'Sort by' }}:</label>
+          <select name="sort_by" id="SortBy" data-sort-by>
+            <option value="manual" {% if sort_by == 'manual' %}selected{% endif %}>{{ 'products.facets.featured' | t: default: 'Featured' }}</option>
+            <option value="best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>{{ 'products.facets.best_selling' | t: default: 'Best selling' }}</option>
+            <option value="title-ascending" {% if sort_by == 'title-ascending' %}selected{% endif %}>{{ 'products.facets.az' | t: default: 'A-Z' }}</option>
+            <option value="title-descending" {% if sort_by == 'title-descending' %}selected{% endif %}>{{ 'products.facets.za' | t: default: 'Z-A' }}</option>
+            <option value="price-ascending" {% if sort_by == 'price-ascending' %}selected{% endif %}>{{ 'products.facets.price_asc' | t: default: 'Price: Low to High' }}</option>
+            <option value="price-descending" {% if sort_by == 'price-descending' %}selected{% endif %}>{{ 'products.facets.price_desc' | t: default: 'Price: High to Low' }}</option>
+            <option value="created-descending" {% if sort_by == 'created-descending' %}selected{% endif %}>{{ 'products.facets.date_desc' | t: default: 'Newest' }}</option>
+          </select>
+        </div>
+      </div>
+
+      {%- if collection.products.size == 0 -%}
+        <div class="main-collection__empty">
+          <h3>No products match those filters.</h3>
+          <a href="{{ collection.url }}" class="btn btn--outline">Clear filters</a>
+        </div>
+      {%- else -%}
+        <div class="products products--grid products--3">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product, show_specs: s.show_specs %}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination" role="navigation" aria-label="Pagination">
+            <a href="{{ paginate.previous.url }}" class="pagination__prev{% unless paginate.previous %} is-disabled{% endunless %}">
+              {% render 'icon', icon: 'chevron-left' %} Prev
+            </a>
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="pagination__page">{{ part.title }}</a>
+              {%- elsif part.title == '…' -%}
+                <span class="pagination__ellipsis">…</span>
+              {%- else -%}
+                <span class="pagination__page is-current">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            <a href="{{ paginate.next.url }}" class="pagination__next{% unless paginate.next %} is-disabled{% endunless %}">
+              Next {% render 'icon', icon: 'chevron-right' %}
+            </a>
+          </nav>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main collection",
+  "tag": "section",
+  "class": "section-main-collection",
+  "settings": [
+    { "type": "checkbox", "id": "show_specs", "label": "Show specs on cards", "default": true },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 12,
+      "max": 48,
+      "step": 6,
+      "default": 24
+    }
+  ],
+  "presets": [
+    { "name": "Main collection" }
+  ]
+}
+{% endschema %}

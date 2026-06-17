@@ -1,0 +1,52 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section section--stats" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="stats-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stat' -%}
+          <div class="stat" {{ block.shopify_attributes }}>
+            <div class="stat__num">{{ block.settings.number }}</div>
+            <div class="stat__label">{{ block.settings.label }}</div>
+            {%- if block.settings.sub != blank -%}
+              <div class="stat__sub">{{ block.settings.sub }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats",
+  "tag": "section",
+  "class": "section-stats",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "50,000+" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Riders" },
+        { "type": "text", "id": "sub", "label": "Subtext" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "stat", "settings": { "number": "10", "label": "Years in business", "sub": "Same owners. Same Reno phone number." } },
+      { "type": "stat", "settings": { "number": "50K+", "label": "Riders", "sub": "Across all 50 states." } },
+      { "type": "stat", "settings": { "number": "4.8★", "label": "Average rating", "sub": "From 4,200+ verified reviews." } },
+      { "type": "stat", "settings": { "number": "8s", "label": "Support wait time", "sub": "Reno, NV team. No bots." } }
+    ]
+  },
+  "presets": [
+    { "name": "Stats" }
+  ]
+}
+{% endschema %}

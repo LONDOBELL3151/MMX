@@ -1,0 +1,76 @@
+{%- liquid
+  assign s = section.settings
+-%}
+
+{%- if s.show_bar -%}
+  <div class="announcement" role="region" aria-label="{{ s.aria_label | escape }}" {{ section.shopify_attributes }}>
+    <div class="announcement__track" {% if s.enable_marquee %}data-marquee{% endif %}>
+      {%- for block in section.blocks -%}
+        <span class="announcement__item" {{ block.shopify_attributes }}>
+          <span class="announcement__dot">·</span>
+          {{ block.settings.text }}
+        </span>
+      {%- endfor -%}
+      {%- if section.blocks.size == 0 -%}
+        <span class="announcement__item"><span class="announcement__dot">·</span> {{ s.default_text }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "tag": "section",
+  "class": "section-announcement-bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_bar",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_marquee",
+      "label": "Enable scrolling marquee",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Aria label",
+      "default": "Announcements"
+    },
+    {
+      "type": "text",
+      "id": "default_text",
+      "label": "Default text (when no blocks)",
+      "default": "FREE Shipping on All eBikes — Ships from US Warehouse"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "FREE Shipping on All eBikes — Ships from US Warehouse"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "default": {
+    "blocks": [
+      { "type": "message" },
+      { "type": "message", "settings": { "text": "14-Day Free Trial — Ride It, Love It or Return It" } },
+      { "type": "message", "settings": { "text": "UL 2849 Certified Battery — Ride with Confidence" } },
+      { "type": "message", "settings": { "text": "2-Year Warranty + US-Based Support Team" } }
+    ]
+  }
+}
+{% endschema %}

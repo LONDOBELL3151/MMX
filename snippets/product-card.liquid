@@ -60,12 +60,26 @@
     {%- if card_product != blank -%}
       {%- assign rating_value = 0.0 -%}
       {%- assign rating_count = 0 -%}
-      {%- if card_product.metafields.reviews.rating.value -%}
+      {%- comment -%}
+        Judge.me support - this user's store uses Judge.me.
+        Judge.me injects metafields under BOTH namespaces depending on version:
+        - Modern (recommended):  product.metafields.judgeme.rating  (rating object: {value, scale_min, scale_max})
+                                 product.metafields.judgeme.review_count
+        - Legacy mirror:          product.metafields.reviews.rating  (same rating object structure)
+                                 product.metafields.reviews.rating_count
+        Try modern first, fall back to legacy, fall back to other review apps.
+      {%- endcomment -%}
+      {%- if card_product.metafields.judgeme.rating -%}
+        {%- assign jm_rating = card_product.metafields.judgeme.rating -%}
+        {%- if jm_rating.value -%}
+          {%- assign rating_value = jm_rating.value | times: 1.0 -%}
+        {%- else -%}
+          {%- assign rating_value = jm_rating | times: 1.0 -%}
+        {%- endif -%}
+        {%- assign rating_count = card_product.metafields.judgeme.review_count | default: 0 -%}
+      {%- elsif card_product.metafields.reviews.rating.value -%}
         {%- assign rating_value = card_product.metafields.reviews.rating.value | times: 1.0 -%}
         {%- assign rating_count = card_product.metafields.reviews.rating_count | default: 0 -%}
-      {%- elsif card_product.metafields.judgeme.rating -%}
-        {%- assign rating_value = card_product.metafields.judgeme.rating | times: 1.0 -%}
-        {%- assign rating_count = card_product.metafields.judgeme.review_count | default: 0 -%}
       {%- elsif card_product.metafields.loox.avg_rating -%}
         {%- assign rating_value = card_product.metafields.loox.avg_rating | times: 1.0 -%}
         {%- assign rating_count = card_product.metafields.loox.num_reviews | default: 0 -%}

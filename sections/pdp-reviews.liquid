@@ -10,12 +10,16 @@
 
     {%- assign pdp_rating = 0.0 -%}
     {%- assign pdp_rating_count = 0 -%}
-    {%- if product.metafields.reviews.rating.value -%}
+    {%- if product.metafields.judgeme.rating -%}
+      {%- if product.metafields.judgeme.rating.value -%}
+        {%- assign pdp_rating = product.metafields.judgeme.rating.value | times: 1.0 -%}
+      {%- else -%}
+        {%- assign pdp_rating = product.metafields.judgeme.rating | times: 1.0 -%}
+      {%- endif -%}
+      {%- assign pdp_rating_count = product.metafields.judgeme.review_count | default: 0 -%}
+    {%- elsif product.metafields.reviews.rating.value -%}
       {%- assign pdp_rating = product.metafields.reviews.rating.value | times: 1.0 -%}
       {%- assign pdp_rating_count = product.metafields.reviews.rating_count | default: 0 -%}
-    {%- elsif product.metafields.judgeme.rating -%}
-      {%- assign pdp_rating = product.metafields.judgeme.rating | times: 1.0 -%}
-      {%- assign pdp_rating_count = product.metafields.judgeme.review_count | default: 0 -%}
     {%- elsif product.metafields.loox.avg_rating -%}
       {%- assign pdp_rating = product.metafields.loox.avg_rating | times: 1.0 -%}
       {%- assign pdp_rating_count = product.metafields.loox.num_reviews | default: 0 -%}

@@ -1,53 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
-        "image_position": "right"
+        "eyebrow": "New for 2026",
+        "title": "<p>Built for the <em>ride home.</em></p>",
+        "subtitle": "Foldable electric trikes built for the whole family. UL-certified, US-shipping, 14-day trial, 2-year warranty.",
+        "button_text": "Shop Electric Trikes",
+        "button_link": "",
+        "button2_text": "Compare Models",
+        "button2_link": "",
+        "badge_text": "FREE 14-DAY TRIAL",
+        "show_urgency": true,
+        "urgency_text": "Ships from US warehouse - free 2-day in 48 states",
+        "height": "medium",
+        "image_position": "right",
+        "bg_color": "#ffffff"
       }
     },
     "proof": {
-      "type": "proof-bar"
+      "type": "proof-bar",
+      "settings": {
+        "bg_color": "#121212"
+      }
     },
     "trust": {
-      "type": "trust-badges"
+      "type": "trust-badges",
+      "settings": {
+        "bg_color": "#f7f7f5"
+      }
     },
     "lineup": {
       "type": "featured-collection",
       "settings": {
         "heading": "The lineup",
         "subheading": "Three trikes built for three kinds of families.",
+        "collection": "trike",
         "products_to_show": 3,
         "columns": "3",
-        "show_view_all": true
+        "show_view_all": true,
+        "view_all_label": "View all",
+        "placeholder_product_handles": "",
+        "bg": "white"
       }
     },
     "why": {
       "type": "why-maxfoot",
       "settings": {
-        "heading": "Why MaxFoot"
+        "heading": "Why MaxFoot",
+        "subheading": "",
+        "columns": "3",
+        "style": "dark"
       }
     },
     "press": {
-      "type": "press-quote"
+      "type": "press-quote",
+      "settings": {
+        "quote": "The MaxFoot MF-33 is the most passenger-friendly electric trike we've ever tested - and we've tested them all.",
+        "attribution": "Mike Nau, Electric Bike Review",
+        "outlet": "",
+        "bg_color": "#ffc000",
+        "text_color": "#121212"
+      }
     },
     "riders": {
       "type": "rider-testimonials",
       "settings": {
-        "heading": "Real riders, real rides"
+        "heading": "Real riders, real rides",
+        "subheading": ""
       }
     },
     "faq": {
       "type": "faq",
       "settings": {
-        "heading": "Before you buy"
+        "heading": "Before you buy",
+        "subheading": "",
+        "cta_text": "Still have questions?",
+        "cta_link": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "cta": {
-      "type": "cta-strip"
+      "type": "cta-strip",
+      "settings": {
+        "title": "Ready to ride?",
+        "subtitle": "Ships from our Reno, NV warehouse. Delivery in 3-5 business days.",
+        "button_text": "Shop Trikes",
+        "button_link": "",
+        "button2_text": "",
+        "button2_link": "",
+        "bg": "yellow"
+      }
     },
     "newsletter": {
-      "type": "newsletter"
+      "type": "newsletter",
+      "settings": {
+        "title": "SEE DEALS FIRST",
+        "subtitle": "$50 OFF your first order + exclusive deals before they hit the site.",
+        "show_first_name": false,
+        "placeholder": "Your email",
+        "button_label": "Subscribe",
+        "disclaimer": "<p>We respect your inbox. Unsubscribe anytime.</p>",
+        "bg_color": "#ffc000"
+      }
     }
   },
   "order": [

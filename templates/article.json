@@ -1,24 +1,32 @@
 {
   "sections": {
-    "header-group": { "type": "header-group" },
-    "header": { "type": "post-header" },
-    "content": { "type": "post-content" },
-    "author": { "type": "author-card" },
-    "share": { "type": "post-cta" },
+    "header-group": {
+      "type": "header-group"
+    },
+    "header": {
+      "type": "post-header"
+    },
+    "content": {
+      "type": "post-content"
+    },
+    "author": {
+      "type": "author-card"
+    },
     "related": {
       "type": "related-posts",
       "settings": {
         "count": 3
       }
     },
-    "footer-group": { "type": "footer-group" }
+    "footer-group": {
+      "type": "footer-group"
+    }
   },
   "order": [
     "header-group",
     "header",
     "content",
     "author",
-    "share",
     "related",
     "footer-group"
   ]

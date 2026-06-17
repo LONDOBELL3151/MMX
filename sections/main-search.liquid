@@ -1,0 +1,47 @@
+{%- liquid
+  assign s = section.settings
+  assign results = search.results
+-%}
+
+<section class="section search-page" {{ section.shopify_attributes }}>
+  <div class="container">
+    <h1 class="section__title">{{ 'general.search' | t: default: 'Search' }}</h1>
+    <form action="{{ routes.search_url }}" method="get" class="search-form" role="search">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search' | t: default: 'Search products...' }}" autofocus>
+      <button type="submit" class="btn btn--primary">{{ 'general.search' | t: default: 'Search' }}</button>
+    </form>
+
+    {%- if search.performed and results.size == 0 -%}
+      <p class="search-empty">{{ 'general.no_results' | t: default: 'No results found for' }} "<strong>{{ search.terms }}</strong>"</p>
+    {%- elsif search.performed -%}
+      <p class="search-count">{{ results.size }} {{ results.size | pluralize: 'result', 'results' }}</p>
+      <div class="products products--grid products--4">
+        {%- for product in results -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="search-suggestions">
+        <h3>Popular searches</h3>
+        <div class="search-suggestions__grid">
+          {%- assign popular_collections = collections | limit: 6 -%}
+          {%- for c in popular_collections -%}
+            <a href="{{ c.url }}" class="search-suggestion">{{ c.title }}</a>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search results",
+  "tag": "section",
+  "class": "section-main-search",
+  "settings": [],
+  "presets": [
+    { "name": "Search results" }
+  ]
+}
+{% endschema %}

@@ -183,7 +183,7 @@
 .newsletter__sub{opacity:.85;font-size:17px;line-height:1.6}
 .newsletter__form{display:flex;flex-direction:column;gap:12px}
 .newsletter__form input[type="text"],.newsletter__form input[type="email"]{padding:16px 18px;background:rgba(255,255,255,.95);color:var(--color-primary);border-radius:var(--radius-md);font-size:15px}
-.newsletter__form .btn{border:3px solid var(--color-primary);box-shadow:0 2px 0 var(--color-primary)}
+.newsletter__form .btn{border:3px solid var(--color-accent);box-shadow:0 2px 0 var(--color-accent)}
 .newsletter__form input:focus{outline:2px solid var(--color-accent);background:#fff}
 .newsletter__disclaimer{font-size:12px;opacity:.6}
 @media (max-width:990px){.newsletter__grid{grid-template-columns:1fr;text-align:center}}

@@ -19,6 +19,7 @@
         "button_link": "",
         "button2_text": "Compare Models",
         "button2_link": "",
+        "image": "shopify://shop_images/Gemini_Generated_Image_n2n7mun2n7mun2n7_2.webp",
         "badge_text": "FREE 14-DAY TRIAL",
         "show_urgency": true,
         "urgency_text": "Ships from US warehouse - free 2-day in 48 states",
@@ -29,6 +30,42 @@
     },
     "proof": {
       "type": "proof-bar",
+      "blocks": {
+        "stat_9xU7Lm": {
+          "type": "stat",
+          "settings": {
+            "number": "7 Years",
+            "label": "Operation"
+          }
+        },
+        "stat_pjDVg9": {
+          "type": "stat",
+          "settings": {
+            "number": "11 Years",
+            "label": "Industry experience"
+          }
+        },
+        "stat_wxwLCH": {
+          "type": "stat",
+          "settings": {
+            "number": "3,000+",
+            "label": "Repeat Customers"
+          }
+        },
+        "stat_p8YazQ": {
+          "type": "stat",
+          "settings": {
+            "number": "50,000+",
+            "label": "Riders"
+          }
+        }
+      },
+      "block_order": [
+        "stat_9xU7Lm",
+        "stat_pjDVg9",
+        "stat_wxwLCH",
+        "stat_p8YazQ"
+      ],
       "settings": {
         "bg_color": "#121212"
       }

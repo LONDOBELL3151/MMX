@@ -213,15 +213,18 @@
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "menu_link", "settings": { "label": "Electric Trikes", "link": "/collections/electric-trikes", "accent": true } },
-      { "type": "menu_link", "settings": { "label": "eBikes", "link": "/collections/ebikes" } },
-      { "type": "menu_link", "settings": { "label": "Accessories", "link": "/collections/accessories" } },
-      { "type": "menu_link", "settings": { "label": "Sale", "link": "/collections/sale" } },
-      { "type": "menu_link", "settings": { "label": "About", "link": "/pages/about-us" } },
-      { "type": "menu_link", "settings": { "label": "Contact", "link": "/pages/contact" } }
-    ]
-  }
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        { "type": "menu_link", "settings": { "label": "Electric Trikes", "link": "/collections/electric-trikes", "accent": true } },
+        { "type": "menu_link", "settings": { "label": "eBikes", "link": "/collections/ebikes" } },
+        { "type": "menu_link", "settings": { "label": "Accessories", "link": "/collections/accessories" } },
+        { "type": "menu_link", "settings": { "label": "Sale", "link": "/collections/sale" } },
+        { "type": "menu_link", "settings": { "label": "About", "link": "/pages/about-us" } },
+        { "type": "menu_link", "settings": { "label": "Contact", "link": "/pages/contact" } }
+      ]
+    }
+  ]
 }
 {% endschema %}

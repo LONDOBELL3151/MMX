@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "main": {
+      "type": "compare",
+      "settings": {
+        "heading": "Compare Models",
+        "subheading": "Side-by-side specs to help you pick the right ride.",
+        "max_products": 4
+      },
+      "blocks": {
+        "product-1": { "type": "product_slot" },
+        "product-2": { "type": "product_slot" },
+        "spec-price": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Price",
+            "tag_prefix": "price",
+            "direction": "low"
+          }
+        },
+        "spec-range": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Range",
+            "tag_prefix": "range",
+            "direction": "high"
+          }
+        },
+        "spec-top-speed": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Top Speed",
+            "tag_prefix": "top_speed",
+            "direction": "high"
+          }
+        },
+        "spec-battery": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Battery",
+            "tag_prefix": "battery",
+            "direction": "high"
+          }
+        },
+        "spec-motor": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Motor Power",
+            "tag_prefix": "motor",
+            "direction": "high"
+          }
+        },
+        "spec-weight": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Weight",
+            "tag_prefix": "weight",
+            "direction": "low"
+          }
+        },
+        "spec-payload": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Payload",
+            "tag_prefix": "payload",
+            "direction": "high"
+          }
+        },
+        "spec-wheels": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Wheel Size",
+            "tag_prefix": "wheels",
+            "direction": "high"
+          }
+        }
+      },
+      "block_order": [
+        "product-1",
+        "product-2",
+        "spec-price",
+        "spec-range",
+        "spec-top-speed",
+        "spec-battery",
+        "spec-motor",
+        "spec-weight",
+        "spec-payload",
+        "spec-wheels"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

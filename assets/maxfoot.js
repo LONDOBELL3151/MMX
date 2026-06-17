@@ -194,4 +194,27 @@
       });
     }
   });
+
+
+// Compare table: highlight best value per row
+(function () {
+  document.querySelectorAll('[data-compare-table]').forEach((table) => {
+    table.querySelectorAll('[data-spec-row]').forEach((row) => {
+      const direction = row.getAttribute('data-compare-direction') || 'high';
+      const cells = row.querySelectorAll('td[data-spec-value]');
+      let best = null;
+      let bestVal = direction === 'high' ? -Infinity : Infinity;
+      cells.forEach((cell) => {
+        const v = parseFloat(cell.getAttribute('data-spec-value')) || 0;
+        if (direction === 'high' ? v > bestVal : v < bestVal) {
+          bestVal = v;
+          best = cell;
+        }
+      });
+      cells.forEach((cell) => cell.classList.remove('is-best'));
+      if (best && bestVal > 0) best.classList.add('is-best');
+    });
+  });
+})();
+
 })();

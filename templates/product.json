@@ -1,11 +1,5 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group",
-      "settings": {
-        "show_announcement": true
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {},
@@ -34,20 +28,15 @@
     },
     "recent": {
       "type": "pdp-recent"
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
     "main",
     "features",
     "accordions",
     "compare",
     "pair",
     "reviews",
-    "recent",
-    "footer-group"
+    "recent"
   ]
 }

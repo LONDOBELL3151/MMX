@@ -1,8 +1,5 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "hero": {
       "type": "page-hero"
     },
@@ -14,16 +11,11 @@
       "settings": {
         "show_map": true
       }
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
     "hero",
     "channels",
-    "form",
-    "footer-group"
+    "form"
   ]
 }

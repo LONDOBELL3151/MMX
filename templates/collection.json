@@ -1,22 +1,14 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "banner": {
       "type": "collection-banner"
     },
     "main": {
       "type": "main-collection"
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
     "banner",
-    "main",
-    "footer-group"
+    "main"
   ]
 }

@@ -1,8 +1,5 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "main": {
       "type": "main-cart",
       "settings": {
@@ -10,14 +7,9 @@
         "show_trust": true,
         "show_recommendations": true
       }
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
-    "main",
-    "footer-group"
+    "main"
   ]
 }

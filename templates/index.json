@@ -1,8 +1,5 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "hero": {
       "type": "hero",
       "settings": {
@@ -51,13 +48,9 @@
     },
     "newsletter": {
       "type": "newsletter"
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
     "hero",
     "proof",
     "trust",
@@ -67,7 +60,6 @@
     "riders",
     "faq",
     "cta",
-    "newsletter",
-    "footer-group"
+    "newsletter"
   ]
 }

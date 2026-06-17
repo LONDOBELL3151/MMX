@@ -1,8 +1,5 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "hero": {
       "type": "blog-hero",
       "settings": {
@@ -15,15 +12,10 @@
       "settings": {
         "blog": "news"
       }
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
     "hero",
-    "main",
-    "footer-group"
+    "main"
   ]
 }

@@ -1,8 +1,5 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "hero": {
       "type": "page-hero"
     },
@@ -20,19 +17,14 @@
     },
     "cta": {
       "type": "cta-strip"
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
     "hero",
     "story",
     "stats",
     "values",
     "timeline",
-    "cta",
-    "footer-group"
+    "cta"
   ]
 }

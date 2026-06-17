@@ -1,8 +1,5 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "header": {
       "type": "post-header"
     },
@@ -17,17 +14,12 @@
       "settings": {
         "count": 3
       }
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
     "header",
     "content",
     "author",
-    "related",
-    "footer-group"
+    "related"
   ]
 }

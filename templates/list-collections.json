@@ -1,18 +1,10 @@
 {
   "sections": {
-    "header-group": {
-      "type": "header-group"
-    },
     "main": {
       "type": "main-list-collections"
-    },
-    "footer-group": {
-      "type": "footer-group"
     }
   },
   "order": [
-    "header-group",
-    "main",
-    "footer-group"
+    "main"
   ]
 }

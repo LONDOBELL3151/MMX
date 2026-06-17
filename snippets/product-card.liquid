@@ -57,10 +57,12 @@
       <a href="{{ card_product.url | default: '#' }}">{{ card_product.title | default: 'Product Title' }}</a>
     </h3>
 
-    {%- if card_product != blank and card_product.metafields.reviews.rating -%}
+    {%- if card_product != blank and card_product.metafields.reviews.rating.value -%}
+      {%- assign rating_value = card_product.metafields.reviews.rating.value | times: 1.0 -%}
+      {%- assign rating_count = card_product.metafields.reviews.rating_count | default: 0 -%}
       <div class="product-card__rating">
         <span class="product-card__stars">★★★★★</span>
-        <strong>{{ card_product.metafields.reviews.rating }} ({{ card_product.metafields.reviews.rating_count }})</strong>
+        <strong>{{ rating_value }} ({{ rating_count }})</strong>
       </div>
     {%- else -%}
       <div class="product-card__rating">

@@ -34,18 +34,13 @@
   },
   "cart": {
     "general": {
-      "title": "Your Cart",
-      "empty": "Your cart is empty",
-      "continue_shopping": "Continue shopping",
-      "close_cart": "Close cart",
       "subtotal": "Subtotal",
+      "total": "Total",
       "shipping": "Shipping",
       "tax": "Estimated tax",
-      "total": "Total",
-      "coupon": "Discount code",
-      "checkout": "Checkout",
       "order_summary": "Order Summary",
-      "update": "Update"
+      "coupon": "Discount code",
+      "empty": "Your cart is empty"
     },
     "labels": {
       "qty": "Quantity"
@@ -66,6 +61,10 @@
     "cart": {
       "empty": "Your cart is empty",
       "continue_shopping": "Continue shopping"
+    },
+    "featured_collection": {
+      "view_all": "View all",
+      "shop_now": "Shop now"
     }
   },
   "accessibility": {
@@ -76,5 +75,16 @@
     "pagination": "Pagination",
     "slider": "Slider",
     "skip_to_text": "Skip to text"
+  },
+  "product": {
+    "choose_options": "Choose Options",
+    "add_to_cart": "Add to Cart",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "from": "From",
+    "view_details": "View details",
+    "quick_view": "Quick view",
+    "select_variant": "Select a variant",
+    "quantity": "Quantity"
   }
 }

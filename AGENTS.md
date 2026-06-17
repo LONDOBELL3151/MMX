@@ -19,9 +19,17 @@
 2. `{% endschema %}` 前必须换行,不能 `}{% endschema %}`
 3. 文件结尾必须有一个 trailing newline
 4. **schema 里不能同时有 `default` 和 `presets`** — `presets` 就是默认
-5. `url` 类型 setting 的 default 必须是完整 `https://...` URL 或**留空**(相对路径 `/pages/xxx` 不行)
-6. JSON 里不能有字面换行符在 string 内(`"default": "line1\nline2"` 必须 `"line1, line2"` 或转义为 `\\n`)
-7. JSON 不能有 trailing comma
+5. **顶层 `default` key 只在 section group JSON(`.json` 文件)里合法,普通 `.liquid` section 不能用** — 默认 blocks 写在 `presets` 里:
+   ```json
+   "presets": [
+     { "name": "Header", "blocks": [
+       { "type": "menu_link", "settings": { ... } }
+     ]}
+   ]
+   ```
+6. `url` 类型 setting 的 default 必须是完整 `https://...` URL 或**留空**(相对路径 `/pages/xxx` 不行)
+7. JSON 里不能有字面换行符在 string 内(`"default": "line1\nline2"` 必须 `"line1, line2"` 或转义为 `\\n`)
+8. JSON 不能有 trailing comma
 
 ### Liquid 规范
 - `{% if X >= Y %}` — **不能加括号** (`{% if (X >= Y) %}` 会报 "Expected dotdot")

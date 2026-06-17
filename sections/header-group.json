@@ -1,0 +1,31 @@
+{
+  "name": "Header group",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_bar": true,
+        "message": "Free shipping on orders over $999. UL-certified. Ships from US warehouse.",
+        "link_text": "Learn more",
+        "link_url": "/pages/shipping"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "show_announcement": true,
+        "sticky_header": true,
+        "logo_position": "middle-left",
+        "menu_position": "middle-right",
+        "show_cart": true,
+        "show_search": true,
+        "show_account": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

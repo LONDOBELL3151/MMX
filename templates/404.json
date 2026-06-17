@@ -1,13 +1,13 @@
 {
   "sections": {
     "header-group": {
-      "type": "header"
+      "type": "header-group"
     },
     "main": {
       "type": "main-404"
     },
     "footer-group": {
-      "type": "footer"
+      "type": "footer-group"
     }
   },
   "order": [

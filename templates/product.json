@@ -1,7 +1,7 @@
 {
   "sections": {
     "header-group": {
-      "type": "header",
+      "type": "header-group",
       "settings": {
         "show_announcement": true
       }
@@ -36,7 +36,7 @@
       "type": "pdp-recent"
     },
     "footer-group": {
-      "type": "footer"
+      "type": "footer-group"
     }
   },
   "order": [

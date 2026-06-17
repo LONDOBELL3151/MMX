@@ -1,7 +1,7 @@
 {
   "sections": {
     "header-group": {
-      "type": "header"
+      "type": "header-group"
     },
     "main": {
       "type": "main-cart",
@@ -12,7 +12,7 @@
       }
     },
     "footer-group": {
-      "type": "footer"
+      "type": "footer-group"
     }
   },
   "order": [

@@ -1,7 +1,7 @@
 {
   "sections": {
     "header-group": {
-      "type": "header"
+      "type": "header-group"
     },
     "hero": {
       "type": "hero",
@@ -53,7 +53,7 @@
       "type": "newsletter"
     },
     "footer-group": {
-      "type": "footer"
+      "type": "footer-group"
     }
   },
   "order": [

@@ -17,7 +17,8 @@
       {%- endif -%}
     </div>
 
-    {% form 'customer', id: 'newsletter-' | append: section.id, class: 'newsletter__form' %}
+    {%- assign form_id = 'newsletter-' | append: section.id -%}
+    {% form 'customer', id: form_id, class: 'newsletter__form' %}
       <input type="hidden" name="contact[tags]" value="prospect,newsletter">
       {%- if s.show_first_name -%}
         <input type="text" name="contact[first_name]" placeholder="First name" autocomplete="given-name">

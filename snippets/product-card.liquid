@@ -61,13 +61,9 @@
       {%- assign rating_value = 0.0 -%}
       {%- assign rating_count = 0 -%}
       {%- comment -%}
-        Judge.me support - this user's store uses Judge.me.
-        Judge.me injects metafields under BOTH namespaces depending on version:
-        - Modern (recommended):  product.metafields.judgeme.rating  (rating object: {value, scale_min, scale_max})
-                                 product.metafields.judgeme.review_count
-        - Legacy mirror:          product.metafields.reviews.rating  (same rating object structure)
-                                 product.metafields.reviews.rating_count
-        Try modern first, fall back to legacy, fall back to other review apps.
+        Try Judge.me native metafields first, then legacy mirror,
+        then other review apps. If none have data, render hidden
+        so the layout doesn't shift.
       {%- endcomment -%}
       {%- if card_product.metafields.judgeme.rating -%}
         {%- assign jm_rating = card_product.metafields.judgeme.rating -%}
@@ -91,6 +87,15 @@
         <div class="product-card__rating">
           <span class="product-card__stars">★★★★★</span>
           <strong>{{ rating_value }} ({{ rating_count }})</strong>
+        </div>
+      {%- elsif card_product.metafields.judgeme -%}
+        {%- comment -%}
+          Judge.me is installed (namespace 'judgeme' exists) but no rating yet.
+          Render a hidden row so layout is consistent until reviews come in.
+        {%- endcomment -%}
+        <div class="product-card__rating" style="visibility:hidden">
+          <span class="product-card__stars">★★★★★</span>
+          <strong>0.0 (0)</strong>
         </div>
       {%- else -%}
         <div class="product-card__rating" style="visibility:hidden">

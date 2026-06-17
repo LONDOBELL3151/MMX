@@ -8,14 +8,8 @@
     },
     "main": {
       "type": "main-product",
-      "blocks": {
-        "breadcrumbs": {
-          "type": "breadcrumbs"
-        }
-      },
-      "block_order": [
-        "breadcrumbs"
-      ]
+      "blocks": {},
+      "block_order": []
     },
     "features": {
       "type": "pdp-features",

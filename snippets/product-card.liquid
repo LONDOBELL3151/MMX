@@ -57,18 +57,33 @@
       <a href="{{ card_product.url | default: '#' }}">{{ card_product.title | default: 'Product Title' }}</a>
     </h3>
 
-    {%- if card_product != blank and card_product.metafields.reviews.rating.value -%}
-      {%- assign rating_value = card_product.metafields.reviews.rating.value | times: 1.0 -%}
-      {%- assign rating_count = card_product.metafields.reviews.rating_count | default: 0 -%}
-      <div class="product-card__rating">
-        <span class="product-card__stars">★★★★★</span>
-        <strong>{{ rating_value }} ({{ rating_count }})</strong>
-      </div>
-    {%- else -%}
-      <div class="product-card__rating">
-        <span class="product-card__stars">★★★★★</span>
-        <strong>4.8 (412)</strong>
-      </div>
+    {%- if card_product != blank -%}
+      {%- assign rating_value = 0.0 -%}
+      {%- assign rating_count = 0 -%}
+      {%- if card_product.metafields.reviews.rating.value -%}
+        {%- assign rating_value = card_product.metafields.reviews.rating.value | times: 1.0 -%}
+        {%- assign rating_count = card_product.metafields.reviews.rating_count | default: 0 -%}
+      {%- elsif card_product.metafields.judgeme.rating -%}
+        {%- assign rating_value = card_product.metafields.judgeme.rating | times: 1.0 -%}
+        {%- assign rating_count = card_product.metafields.judgeme.review_count | default: 0 -%}
+      {%- elsif card_product.metafields.loox.avg_rating -%}
+        {%- assign rating_value = card_product.metafields.loox.avg_rating | times: 1.0 -%}
+        {%- assign rating_count = card_product.metafields.loox.num_reviews | default: 0 -%}
+      {%- elsif card_product.metafields.yotpo.reviews_average -%}
+        {%- assign rating_value = card_product.metafields.yotpo.reviews_average | times: 1.0 -%}
+        {%- assign rating_count = card_product.metafields.yotpo.reviews_count | default: 0 -%}
+      {%- endif -%}
+      {%- if rating_value > 0 -%}
+        <div class="product-card__rating">
+          <span class="product-card__stars">★★★★★</span>
+          <strong>{{ rating_value }} ({{ rating_count }})</strong>
+        </div>
+      {%- else -%}
+        <div class="product-card__rating" style="visibility:hidden">
+          <span class="product-card__stars">★★★★★</span>
+          <strong>0.0 (0)</strong>
+        </div>
+      {%- endif -%}
     {%- endif -%}
 
     {%- if show_specs and card_product != blank -%}

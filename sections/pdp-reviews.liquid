@@ -8,11 +8,27 @@
       <h2 class="section__title">{{ s.heading | default: 'What owners say' }}</h2>
     </div>
 
-    {%- if product.metafields.reviews.rating -%}
+    {%- assign pdp_rating = 0.0 -%}
+    {%- assign pdp_rating_count = 0 -%}
+    {%- if product.metafields.reviews.rating.value -%}
+      {%- assign pdp_rating = product.metafields.reviews.rating.value | times: 1.0 -%}
+      {%- assign pdp_rating_count = product.metafields.reviews.rating_count | default: 0 -%}
+    {%- elsif product.metafields.judgeme.rating -%}
+      {%- assign pdp_rating = product.metafields.judgeme.rating | times: 1.0 -%}
+      {%- assign pdp_rating_count = product.metafields.judgeme.review_count | default: 0 -%}
+    {%- elsif product.metafields.loox.avg_rating -%}
+      {%- assign pdp_rating = product.metafields.loox.avg_rating | times: 1.0 -%}
+      {%- assign pdp_rating_count = product.metafields.loox.num_reviews | default: 0 -%}
+    {%- elsif product.metafields.yotpo.reviews_average -%}
+      {%- assign pdp_rating = product.metafields.yotpo.reviews_average | times: 1.0 -%}
+      {%- assign pdp_rating_count = product.metafields.yotpo.reviews_count | default: 0 -%}
+    {%- endif -%}
+
+    {%- if pdp_rating > 0 -%}
       <div class="reviews-summary">
-        <div class="reviews-summary__big">{{ product.metafields.reviews.rating }}</div>
-        {% render 'stars', rating: product.metafields.reviews.rating %}
-        <div class="reviews-summary__count">Based on {{ product.metafields.reviews.rating_count }} reviews</div>
+        <div class="reviews-summary__big">{{ pdp_rating }}</div>
+        {% render 'stars', rating: pdp_rating %}
+        <div class="reviews-summary__count">Based on {{ pdp_rating_count }} reviews</div>
       </div>
     {%- endif -%}
 

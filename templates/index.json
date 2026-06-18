@@ -132,9 +132,46 @@
     },
     "why": {
       "type": "why-maxfoot",
+      "blocks": {
+        "pillar_yMRV8c": {
+          "type": "pillar",
+          "settings": {
+            "number": "100%",
+            "title": "",
+            "text": "All electric bicycles and electric tricycles undergo 100% quality inspection by our team.",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "pillar_EBUp7t": {
+          "type": "pillar",
+          "settings": {
+            "number": "2×",
+            "title": "",
+            "text": "<b>2-year warranty</b> — full coverage on motor, battery, and frame. Twice the industry average.",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "pillar_FDzAtJ": {
+          "type": "pillar",
+          "settings": {
+            "number": "2–7",
+            "title": "",
+            "text": "Ships in 2-7 days from California. 14-day free trial. US-based support team.",
+            "link_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "pillar_yMRV8c",
+        "pillar_EBUp7t",
+        "pillar_FDzAtJ"
+      ],
       "settings": {
         "heading": "Why MaxFoot",
-        "subheading": "",
+        "subheading": "Three numbers that explain why 50,000 American families picked us over the other brands.",
         "columns": "3",
         "style": "dark"
       }

@@ -179,8 +179,8 @@
     "press": {
       "type": "press-quote",
       "settings": {
-        "quote": "The MaxFoot MF-33 is the most passenger-friendly electric trike we've ever tested - and we've tested them all.",
-        "attribution": "Mike Nau, Electric Bike Review",
+        "quote": "The motor is definitely powerful.... like you sometimes see with higher-end ebikes.",
+        "attribution": "Electric Bike Review",
         "outlet": "",
         "bg_color": "#ffc000",
         "text_color": "#121212"
@@ -188,6 +188,19 @@
     },
     "riders": {
       "type": "rider-testimonials",
+      "blocks": {
+        "testimonial_8iMeCH": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "",
+            "name": "Sarah K.",
+            "meta": "MF-30 owner, Austin TX"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_8iMeCH"
+      ],
       "settings": {
         "heading": "Real riders, real rides",
         "subheading": ""

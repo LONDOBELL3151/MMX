@@ -667,3 +667,22 @@
 .compare-table td.is-best .compare-table__unit{color:var(--color-accent)}
 @media screen and (max-width:749px){.compare-table{font-size:14px}.compare-table th,.compare-table td{padding:12px 8px}.compare-table__label-col{width:90px}.compare-table__product-link img{width:80px;height:80px}.compare-table__product-title{font-size:14px}.compare-table__product-price{font-size:16px}}
 
+
+
+/* ===== Dark-section heading override =====
+   maxfoot-base.css forces h1-h6 to color: var(--color-primary) (black).
+   That rule has higher specificity than the parent .X { color: #fff }
+   inheritance, so any heading on a dark background (collection-banner,
+   announcement, proof-bar, newsletter, footer, section--stats,
+   section--soft-dark, channel--featured) renders black-on-black.
+
+   The selector list below is the .X h1, .X h2, ... pattern; specificity
+   is 0,1,1 per (class + element), which beats base.css's 0,0,1. */
+.announcement h1,.announcement h2,.announcement h3,.announcement h4,.announcement h5,.announcement h6,
+.proof-bar h1,.proof-bar h2,.proof-bar h3,.proof-bar h4,.proof-bar h5,.proof-bar h6,
+.newsletter h1,.newsletter h2,.newsletter h3,.newsletter h4,.newsletter h5,.newsletter h6,
+.footer h1,.footer h2,.footer h3,.footer h4,.footer h5,.footer h6,
+.section--stats h1,.section--stats h2,.section--stats h3,.section--stats h4,.section--stats h5,.section--stats h6,
+.section--soft-dark h1,.section--soft-dark h2,.section--soft-dark h3,.section--soft-dark h4,.section--soft-dark h5,.section--soft-dark h6,
+.channel--featured h1,.channel--featured h2,.channel--featured h3,.channel--featured h4,.channel--featured h5,.channel--featured h6{color:#fff}
+

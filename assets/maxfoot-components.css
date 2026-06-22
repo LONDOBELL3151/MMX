@@ -51,21 +51,37 @@
 .mobile-menu__footer{padding:20px 24px;border-top:1px solid var(--color-border)}
 
 /* ===== Hero ===== */
-.hero{position:relative;overflow:hidden;padding:48px 0 64px;background:var(--color-bg)}
-.hero__grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;min-height:560px}
-.hero__eyebrow{display:inline-block;font-family:var(--font-display);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--color-accent-dark);background:rgba(255,192,0,.12);padding:6px 14px;border-radius:999px;margin-bottom:20px}
-.hero__title{font-size:clamp(48px,6vw,88px);line-height:.95;letter-spacing:-.03em;margin-bottom:24px}
-.hero__sub{font-size:18px;color:var(--color-text-soft);margin-bottom:32px;max-width:520px;line-height:1.6}
+/* ===== Hero (fullwidth overlay) =====
+   Background image fills the section; copy + CTAs overlay on a
+   bottom-fading dark gradient so they stay readable on any photo. */
+.hero{position:relative;overflow:hidden;background:var(--color-bg);color:#fff;isolation:isolate}
+.hero--compact{min-height:480px}
+.hero--medium{min-height:640px}
+.hero--tall{min-height:720px}
+.hero__bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.hero__bg img{width:100%;height:100%;object-fit:cover;display:block}
+.hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.7) 100%)}
+.hero__bg--placeholder{width:100%;height:100%}
+.hero__content{position:relative;z-index:1;min-height:inherit;display:flex;align-items:flex-end;padding:48px 0 64px;width:100%}
+.hero__copy{max-width:560px}
+.hero__eyebrow{display:inline-block;font-family:var(--font-display);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--color-accent);background:rgba(255,192,0,.18);padding:6px 14px;border-radius:999px;margin-bottom:20px}
+.hero__title{font-size:clamp(48px,6vw,88px);line-height:.95;letter-spacing:-.03em;margin-bottom:24px;color:#fff}
+.hero__title em{color:var(--color-accent);font-style:normal}
+.hero__sub{font-size:18px;color:rgba(255,255,255,.88);margin-bottom:32px;max-width:520px;line-height:1.6}
 .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero__urgency{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-size:13px;color:var(--color-text-soft)}
+.hero__cta .btn--primary{background:var(--color-accent);color:var(--color-primary);border-color:var(--color-accent)}
+.hero__cta .btn--primary:hover{background:#FFD340;color:var(--color-primary);border-color:#FFD340}
+.hero__cta .btn--ghost{color:#fff;border-color:rgba(255,255,255,.5);background:transparent}
+.hero__cta .btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+.hero__urgency{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-size:13px;color:rgba(255,255,255,.85)}
 .hero__urgency svg{color:var(--color-accent)}
-.hero__media{position:relative;aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg-soft)}
-.hero__media img{width:100%;height:100%;object-fit:cover}
-.hero__badge{position:absolute;top:20px;left:20px;background:var(--color-accent);color:var(--color-primary);padding:8px 14px;border-radius:var(--radius-sm);font-family:var(--font-display);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.hero__badge{position:absolute;top:24px;left:24px;z-index:2;background:var(--color-accent);color:var(--color-primary);padding:10px 16px;border-radius:var(--radius-sm);font-family:var(--font-display);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:1px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
 @media (max-width:990px){
-  .hero__grid{grid-template-columns:1fr;gap:32px;min-height:auto}
-  .hero__media{order:-1;aspect-ratio:16/10}
+  .hero--medium,.hero--tall{min-height:560px}
+  .hero__content{padding:32px 0 40px}
   .hero__title{font-size:48px}
+  .hero__copy{max-width:100%}
+  .hero__badge{top:16px;left:16px;font-size:11px;padding:8px 12px}
 }
 
 /* ===== Proof bar ===== */

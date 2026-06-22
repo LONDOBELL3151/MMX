@@ -1,9 +1,28 @@
 {%- liquid
   assign s = section.settings
+  assign height_class = 'hero--' | append: s.height
 -%}
 
-<section class="hero" aria-label="Hero" {{ section.shopify_attributes }}>
-  <div class="container hero__grid">
+<section class="hero {{ height_class }}" aria-label="Hero" {{ section.shopify_attributes }}>
+  <div class="hero__bg">
+    {%- if s.image != blank -%}
+      <img src="{{ s.image | image_url: width: 1600 }}"
+           srcset="{{ s.image | image_url: width: 800 }} 800w, {{ s.image | image_url: width: 1200 }} 1200w, {{ s.image | image_url: width: 1600 }} 1600w, {{ s.image | image_url: width: 2000 }} 2000w"
+           sizes="100vw"
+           alt="{{ s.image.alt | default: 'MaxFoot family riding electric trike' | escape }}"
+           loading="eager"
+           width="1600"
+           height="900">
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg hero__bg--placeholder' }}
+    {%- endif -%}
+  </div>
+
+  {%- if s.badge_text != blank -%}
+    <div class="hero__badge">{{ s.badge_text }}</div>
+  {%- endif -%}
+
+  <div class="container hero__content">
     <div class="hero__copy">
       {%- if s.eyebrow != blank -%}
         <span class="hero__eyebrow">{{ s.eyebrow }}</span>
@@ -38,30 +57,123 @@
         </div>
       {%- endif -%}
     </div>
-    <div class="hero__media">
-      {%- if s.image != blank -%}
-        <img src="{{ s.image | image_url: width: 1200 }}"
-             srcset="{{ s.image | image_url: width: 800 }} 800w, {{ s.image | image_url: width: 1200 }} 1200w, {{ s.image | image_url: width: 1600 }} 1600w"
-             sizes="(min-width: 990px) 720px, 100vw"
-             alt="{{ s.image.alt | default: 'MaxFoot family riding electric trike' | escape }}"
-             loading="eager"
-             width="1200"
-             height="800">
-      {%- else -%}
-        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg hero-placeholder' }}
-      {%- endif -%}
-      {%- if s.badge_text != blank -%}
-        <div class="hero__badge">{{ s.badge_text }}</div>
-      {%- endif -%}
-    </div>
   </div>
 </section>
 
-<style>
-  .hero__title em { color: var(--color-accent); font-style: normal; }
-  .hero__title { color: var(--color-text); }
-  .hero { background: var(--color-bg); }
-</style>
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "section-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "New for 2026"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use <em> for highlight)",
+      "default": "<p>Built for the <em>ride home.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Foldable electric trikes built for the whole family. UL-certified, US-shipping, 14-day trial, 2-year warranty."
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Electric Trikes"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA"
+    },
+    {
+      "type": "text",
+      "id": "button2_text",
+      "label": "Button text",
+      "default": "Compare Models"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text (overlay)",
+      "default": "FREE 14-DAY TRIAL"
+    },
+    {
+      "type": "header",
+      "content": "Urgency line"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_urgency",
+      "label": "Show urgency line",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "urgency_text",
+      "label": "Urgency text",
+      "default": "Ships from US warehouse - free 2-day in 48 states"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Section height",
+      "options": [
+        { "value": "compact", "label": "Compact (480px)" },
+        { "value": "medium", "label": "Medium (640px)" },
+        { "value": "tall", "label": "Tall (720px)" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color (behind image if no image)",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}
 
 {% schema %}
 {

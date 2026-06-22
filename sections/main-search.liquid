@@ -24,8 +24,7 @@
       <div class="search-suggestions">
         <h3>Popular searches</h3>
         <div class="search-suggestions__grid">
-          {%- assign popular_collections = collections | limit: 6 -%}
-          {%- for c in popular_collections -%}
+          {%- for c in collections limit: 6 -%}
             <a href="{{ c.url }}" class="search-suggestion">{{ c.title }}</a>
           {%- endfor -%}
         </div>

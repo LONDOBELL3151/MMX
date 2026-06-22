@@ -8,7 +8,7 @@
     <div class="post-author">
       <div class="post-author__avatar">
         {%- if article.user and article.user.image -%}
-          <img src="{{ article.user.image | image_url: width: 200 }}" alt="{{ article.user.name | escape }}" loading="lazy">
+          <img src="{{ article.user.image | image_url: width: 200 }}" alt="{{ article.user.name | escape }}" loading="lazy" width="200" height="200">
         {%- else -%}
           <span>{{ article.author | default: 'MF' | slice: 0, 2 | upcase }}</span>
         {%- endif -%}

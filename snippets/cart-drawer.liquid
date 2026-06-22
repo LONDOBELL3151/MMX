@@ -21,7 +21,7 @@
           <div class="cart-drawer__item" data-line="{{ forloop.index }}">
             <a href="{{ item.url }}" class="cart-drawer__img">
               {%- if item.image -%}
-                <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" loading="lazy">
+                <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" loading="lazy" width="120" height="120">
               {%- endif -%}
             </a>
             <div class="cart-drawer__info">

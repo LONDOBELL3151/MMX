@@ -12,7 +12,7 @@
         {%- if block.type == 'logo' -%}
           <div class="brand-strip__logo" {{ block.shopify_attributes }}>
             {%- if block.settings.image != blank -%}
-              <img src="{{ block.settings.image | image_url: width: 240 }}" alt="{{ block.settings.name | escape }}" loading="lazy">
+              <img src="{{ block.settings.image | image_url: width: 240 }}" alt="{{ block.settings.name | escape }}" loading="lazy" width="240" height="80">
             {%- else -%}
               <span>{{ block.settings.name }}</span>
             {%- endif -%}

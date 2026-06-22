@@ -60,7 +60,6 @@
                   {%- for product_block in section.blocks -%}
                     {%- if product_block.type != 'product_slot' -%}{%- continue -%}{%- endif -%}
                     {%- assign p = product_block.settings.product -%}
-                    {%- assign spec_value = '' -%}
                     {%- assign spec_number = 0 -%}
                     {%- assign spec_unit = '' -%}
                     {%- if p != blank and spec.tag_prefix != blank -%}

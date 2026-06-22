@@ -5,7 +5,7 @@
 <section class="post-content section" {{ section.shopify_attributes }}>
   <div class="container post-content__inner">
     {%- if article.image -%}
-      <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" class="post-content__hero" loading="eager">
+      <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" class="post-content__hero" loading="eager" width="1200" height="600">
     {%- endif -%}
 
     <div class="post-content__body rte">

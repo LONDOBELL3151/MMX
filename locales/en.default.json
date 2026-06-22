@@ -43,13 +43,17 @@
   },
   "cart": {
     "general": {
+      "title": "Your Cart",
       "subtotal": "Subtotal",
       "total": "Total",
       "shipping": "Shipping",
       "tax": "Estimated tax",
       "order_summary": "Order Summary",
       "coupon": "Discount code",
-      "empty": "Your cart is empty"
+      "empty": "Your cart is empty",
+      "close_cart": "Close cart",
+      "continue_shopping": "Continue shopping",
+      "checkout": "Checkout"
     },
     "labels": {
       "qty": "Quantity"
@@ -60,6 +64,11 @@
       "title": "Account",
       "details": "Account details",
       "logout": "Log out"
+    },
+    "login": {
+      "title": "Enter store password",
+      "password": "Password",
+      "submit": "Enter"
     }
   },
   "sections": {

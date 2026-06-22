@@ -226,6 +226,42 @@
     },
     "faq": {
       "type": "faq",
+      "blocks": {
+        "question_mWaY3z": {
+          "type": "question",
+          "settings": {
+            "question": "What kind of terrain can Maxfoot e-bikes handle?",
+            "answer": "<p>Maxfoot e-bikes are built for adventure! Equipped with premium fat tires and powerful motors, our bikes easily conquer city streets, sandy beaches, snow, and rugged mountain trails, ensuring a smooth and comfortable ride everywhere you go.</p>"
+          }
+        },
+        "question_WhLdyH": {
+          "type": "question",
+          "settings": {
+            "question": "How long does shipping take, and are there any shipping fees?",
+            "answer": "<p>We offer FREE shipping to the contiguous United States (excluding AK, HI, and remote areas). Orders are processed within 1-2 business days from our US warehouses and typically arrive at your door within 3-7 business days.</p>"
+          }
+        },
+        "question_Yh9hPc": {
+          "type": "question",
+          "settings": {
+            "question": "What is Maxfoot’s warranty policy?",
+            "answer": "<p>We stand behind our quality. Maxfoot provides a 2-year limited warranty on all core components, including the frame, motor, battery, and controller. If you ever need support, our US-based customer service team is always here to help.</p>"
+          }
+        },
+        "question_qyc4dr": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer financing options or payment plans?",
+            "answer": "<p>Yes! We want to make owning a Maxfoot as easy as possible. We partner with leading financing services via Shop Pay to offer flexible monthly payment options. You can choose the plan that fits your budget at checkout and ride now, pay later!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_mWaY3z",
+        "question_WhLdyH",
+        "question_Yh9hPc",
+        "question_qyc4dr"
+      ],
       "settings": {
         "heading": "Before you buy",
         "subheading": "",

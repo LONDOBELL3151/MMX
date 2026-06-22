@@ -1,7 +1,6 @@
 {%- liquid
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: shop.url
-  assign og_type = template | replace: '.', '-' | handleize
   assign og_description = page_description | default: shop.description | default: shop.name
 -%}
 

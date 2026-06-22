@@ -102,12 +102,21 @@
 
   // ============ Mobile filter drawer (collection page) ============
   const facets = document.getElementById('Facets');
+  const facetForm = document.getElementById('FacetFiltersForm');
   const mobileFilterOpen = document.querySelector('[data-mobile-filters-open]');
   const mobileFilterCloseEls = document.querySelectorAll('[data-mobile-filters-close]');
 
   if (mobileFilterOpen && facets) {
     mobileFilterOpen.addEventListener('click', () => facets.classList.add('is-mobile-open'));
     mobileFilterCloseEls.forEach((el) => el.addEventListener('click', () => facets.classList.remove('is-mobile-open')));
+  }
+
+  // Auto-submit filter form on checkbox change. Each checkbox is one
+  // filter value, so toggling a tag should immediately update results.
+  if (facetForm) {
+    facetForm.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+      cb.addEventListener('change', () => facetForm.submit());
+    });
   }
 
   // ============ Newsletter inline submit (prevent default if AJAX) ============

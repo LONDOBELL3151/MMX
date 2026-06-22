@@ -6,10 +6,7 @@
       "type": "footer",
       "settings": {
         "show_payment_icons": true,
-        "show_social": true,
-        "show_newsletter": true,
-        "show_country_selector": false,
-        "show_language_selector": false
+        "show_social": true
       }
     }
   },

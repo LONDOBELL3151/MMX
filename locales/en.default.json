@@ -13,22 +13,10 @@
     "menu": "Menu",
     "home": "Home",
     "share": "Share",
-    "currency": "USD",
-    "language": "Language",
-    "currency_label": "Currency",
-    "skip_to_text": "Skip to content",
-    "load_more": "Load more",
-    "loading": "Loading...",
     "no_results": "No results found",
     "electric_bike": "Electric Bike"
   },
   "products": {
-    "product": {
-      "add_to_cart": "Add to cart",
-      "sold_out": "Sold Out",
-      "unavailable": "Unavailable",
-      "quantity": "Quantity"
-    },
     "facets": {
       "sort_by": "Sort by",
       "featured": "Featured",
@@ -37,15 +25,13 @@
       "za": "Alphabetically, Z-A",
       "price_asc": "Price: Low to High",
       "price_desc": "Price: High to Low",
-      "date_desc": "Date, New to Old",
-      "date_asc": "Date, Old to New"
+      "date_desc": "Date, New to Old"
     }
   },
   "cart": {
     "general": {
       "title": "Your Cart",
       "subtotal": "Subtotal",
-      "total": "Total",
       "shipping": "Shipping",
       "tax": "Estimated tax",
       "order_summary": "Order Summary",
@@ -54,16 +40,11 @@
       "close_cart": "Close cart",
       "continue_shopping": "Continue shopping",
       "checkout": "Checkout"
-    },
-    "labels": {
-      "qty": "Quantity"
     }
   },
   "customer": {
     "account": {
-      "title": "Account",
-      "details": "Account details",
-      "logout": "Log out"
+      "title": "Account"
     },
     "login": {
       "title": "Enter store password",
@@ -71,38 +52,11 @@
       "submit": "Enter"
     }
   },
-  "sections": {
-    "header": {
-      "menu": "Menu",
-      "cart_count": "{{ count }} items"
-    },
-    "cart": {
-      "empty": "Your cart is empty",
-      "continue_shopping": "Continue shopping"
-    },
-    "featured_collection": {
-      "view_all": "View all",
-      "shop_now": "Shop now"
-    }
-  },
   "accessibility": {
-    "close": "Close",
-    "menu": "Menu",
-    "search": "Search",
-    "cart": "Cart",
-    "pagination": "Pagination",
-    "slider": "Slider",
     "skip_to_text": "Skip to text"
   },
   "product": {
     "choose_options": "Choose Options",
-    "add_to_cart": "Add to Cart",
-    "sold_out": "Sold out",
-    "unavailable": "Unavailable",
-    "from": "From",
-    "view_details": "View details",
-    "quick_view": "Quick view",
-    "select_variant": "Select a variant",
-    "quantity": "Quantity"
+    "add_to_cart": "Add to Cart"
   }
 }

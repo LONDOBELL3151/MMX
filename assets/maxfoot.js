@@ -23,15 +23,13 @@
   function openCart() { if (cartDrawer) cartDrawer.classList.add('is-open'); }
   function closeCart() { if (cartDrawer) cartDrawer.classList.remove('is-open'); }
 
-  cartBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      // If drawer mode is enabled, intercept clicks
-      if (cartDrawer && cartDrawer.dataset.cartDrawer === 'enabled') {
-        e.preventDefault();
-        openCart();
-      }
-    });
-  });
+  // Cart buttons: navigate to /cart by default (page mode).
+  // To enable drawer mode, render data-cart-drawer="enabled" on the
+  // drawer element (controlled by a theme setting) and uncomment:
+  //   cartBtns.forEach((btn) => btn.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     openCart();
+  //   }));
   cartCloseEls.forEach((el) => el.addEventListener('click', closeCart));
 
   // ============ Quantity selectors ============

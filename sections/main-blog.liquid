@@ -33,25 +33,36 @@
           </div>
         </article>
 
-        {%- for article in blog.articles offset: 1 limit: 4 -%}
-          {% render 'post-card', post: article %}
-        {%- endfor -%}
-      </div>
+        {%- paginate blog.articles by 6 -%}
+          <div class="blog-grid">
+            {%- for article in blog.articles offset: 1 -%}
+              {% render 'post-card', post: article %}
+            {%- endfor -%}
+          </div>
 
-      {%- if paginate.pages > 1 -%}
-        <nav class="pagination" aria-label="Pagination">
-          <a href="{{ paginate.previous.url }}" class="pagination__prev{% unless paginate.previous %} is-disabled{% endunless %}">{% render 'icon', icon: 'chevron-left' %} Prev</a>
-          {%- for part in paginate.parts -%}
-            {%- if part.is_link -%}
-              <a href="{{ part.url }}" class="pagination__page">{{ part.title }}</a>
-            {%- else -%}
-              <span class="pagination__page{% if part.title == paginate.current_page %} is-current{% endif %}">{{ part.title }}</span>
-            {%- endif -%}
-          {%- endfor -%}
-          <a href="{{ paginate.next.url }}" class="pagination__next{% unless paginate.next %} is-disabled{% endunless %}">Next {% render 'icon', icon: 'chevron-right' %}</a>
-        </nav>
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" aria-label="Pagination">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="pagination__prev">{% render 'icon', icon: 'chevron-left' %} Prev</a>
+              {%- else -%}
+                <span class="pagination__prev is-disabled">{% render 'icon', icon: 'chevron-left' %} Prev</span>
+              {%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}" class="pagination__page">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="pagination__page{% if part.title == paginate.current_page %} is-current{% endif %}">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="pagination__next">Next {% render 'icon', icon: 'chevron-right' %}</a>
+              {%- else -%}
+                <span class="pagination__next is-disabled">Next {% render 'icon', icon: 'chevron-right' %}</span>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
       {%- endif -%}
-    {%- endif -%}
   </div>
 </section>
 

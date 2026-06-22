@@ -21,10 +21,8 @@
     "logo_height_mobile": 36,
     "logo_invert": false,
     "currency_code_enabled": true,
-    "cart_type_drawer": false,
     "free_shipping_threshold": "299",
     "free_shipping_message": "Add {amount} more for FREE shipping!",
-    "enable_animations": true,
     "enable_marquee": true
   },
   "presets": {

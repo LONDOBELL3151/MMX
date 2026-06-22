@@ -1,6 +1,6 @@
-{%- liquid
-  assign article = article | default: closest.article
--%}
+{%- comment -%}
+  closest.article is used directly at use sites to support theme editor preview.
+{%- endcomment -%}
 
 <section class="post-header section" {{ section.shopify_attributes }}>
   <div class="container post-header__inner">

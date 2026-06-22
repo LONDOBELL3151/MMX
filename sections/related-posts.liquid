@@ -1,7 +1,6 @@
 {%- liquid
   assign s = section.settings
   assign blog = blogs[s.blog] | default: blogs['news']
-  assign article = article | default: closest.article
 -%}
 
 <section class="related-posts section" {{ section.shopify_attributes }}>

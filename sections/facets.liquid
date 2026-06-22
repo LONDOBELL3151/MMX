@@ -3,7 +3,7 @@
 -%}
 
 <aside class="facets" id="Facets" {{ section.shopify_attributes }}>
-  <form id="FacetFiltersForm" class="facets__form" action="{{ routes.url_for_collection }}" method="get">
+  <form id="FacetFiltersForm" class="facets__form" action="{{ collection.url }}" method="get">
     {%- if s.show_clear -%}
       <div class="facets__clear">
         <a href="{{ collection.url }}?sort_by={{ sort_by }}">Clear all</a>

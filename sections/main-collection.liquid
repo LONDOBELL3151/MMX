@@ -19,7 +19,7 @@
         </button>
 
         <div class="collection-toolbar__count">
-          <strong>{{ paginate.items }}</strong> products
+          <strong>{{ collection.products_count }}</strong> products
         </div>
 
         <div class="collection-toolbar__sort">
@@ -42,31 +42,41 @@
           <a href="{{ collection.url }}" class="btn btn--outline">Clear filters</a>
         </div>
       {%- else -%}
-        <div class="products products--grid products--3">
-          {%- for product in collection.products -%}
-            {% render 'product-card', product: product, show_specs: s.show_specs %}
-          {%- endfor -%}
-        </div>
-
-        {%- if paginate.pages > 1 -%}
-          <nav class="pagination" role="navigation" aria-label="Pagination">
-            <a href="{{ paginate.previous.url }}" class="pagination__prev{% unless paginate.previous %} is-disabled{% endunless %}">
-              {% render 'icon', icon: 'chevron-left' %} Prev
-            </a>
-            {%- for part in paginate.parts -%}
-              {%- if part.is_link -%}
-                <a href="{{ part.url }}" class="pagination__page">{{ part.title }}</a>
-              {%- elsif part.title == '…' -%}
-                <span class="pagination__ellipsis">…</span>
-              {%- else -%}
-                <span class="pagination__page is-current">{{ part.title }}</span>
-              {%- endif -%}
+        {%- paginate collection.products by s.products_per_page -%}
+          <div class="products products--grid products--3">
+            {%- for product in collection.products -%}
+              {% render 'product-card', product: product, show_specs: s.show_specs %}
             {%- endfor -%}
-            <a href="{{ paginate.next.url }}" class="pagination__next{% unless paginate.next %} is-disabled{% endunless %}">
-              Next {% render 'icon', icon: 'chevron-right' %}
-            </a>
-          </nav>
-        {%- endif -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" role="navigation" aria-label="Pagination">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="pagination__prev">
+                  {% render 'icon', icon: 'chevron-left' %} Prev
+                </a>
+              {%- else -%}
+                <span class="pagination__prev is-disabled">{% render 'icon', icon: 'chevron-left' %} Prev</span>
+              {%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}" class="pagination__page">{{ part.title }}</a>
+                {%- elsif part.title == '…' -%}
+                  <span class="pagination__ellipsis">…</span>
+                {%- else -%}
+                  <span class="pagination__page is-current">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="pagination__next">
+                  Next {% render 'icon', icon: 'chevron-right' %}
+                </a>
+              {%- else -%}
+                <span class="pagination__next is-disabled">Next {% render 'icon', icon: 'chevron-right' %}</span>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
       {%- endif -%}
     </div>
   </div>

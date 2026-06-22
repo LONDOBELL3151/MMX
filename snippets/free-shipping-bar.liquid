@@ -1,5 +1,4 @@
 {%- liquid
-  assign cart = cart
   assign threshold = settings.free_shipping_threshold | times: 100
   assign progress = cart.total_price | times: 100 | divided_by: threshold
   if progress > 100
@@ -16,7 +15,12 @@
   <div class="ship-bar__content">
     {%- if remaining > 0 -%}
       <div class="ship-bar__text">
-        Add <strong>{{ remaining | money }}</strong> more for <strong>FREE shipping!</strong>
+        {%- assign msg = settings.free_shipping_message -%}
+        {%- if msg contains '{amount}' -%}
+          {{ msg | split: '{amount}' | first }}<strong>{{ remaining | money }}</strong>{{ msg | split: '{amount}' | last }}
+        {%- else -%}
+          {{ msg }}
+        {%- endif -%}
       </div>
     {%- else -%}
       <div class="ship-bar__text">

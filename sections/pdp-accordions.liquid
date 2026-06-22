@@ -1,6 +1,6 @@
-{%- liquid
-  assign product = closest.product
--%}
+{%- comment -%}
+  closest.product is used directly at use sites to support theme editor preview.
+{%- endcomment -%}
 
 <section class="section pdp-accordions" {{ section.shopify_attributes }}>
   <div class="container">

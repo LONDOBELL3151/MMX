@@ -1,6 +1,5 @@
 {%- liquid
   assign s = section.settings
-  assign product = s.product | default: closest.product
 -%}
 
 <section class="section pdp-gallery" {{ section.shopify_attributes }}>
@@ -19,9 +18,8 @@
           <span class="pdp__rating-text">{{ product.metafields.reviews.rating }} ({{ product.metafields.reviews.rating_count }} reviews)</span>
         </div>
       {%- else -%}
-        <div class="pdp__rating">
-          {% render 'stars', rating: 4.8 %}
-          <span class="pdp__rating-text">4.8 (412 reviews)</span>
+        <div class="pdp__rating pdp__rating--empty">
+          <span class="pdp__rating-text">No reviews yet</span>
         </div>
       {%- endif -%}
 

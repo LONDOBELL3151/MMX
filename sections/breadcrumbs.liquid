@@ -1,7 +1,9 @@
-{%- liquid
-  assign s = section.settings
-  assign product = s.product | default: closest.product
--%}
+{%- comment -%}
+  Breadcrumbs wrapper section.
+  Renders the breadcrumbs snippet. Add this section in theme editor to
+  place breadcrumbs as a standalone block on a page. If unused, the
+  snippet can also be embedded directly via {% render 'breadcrumbs' %}.
+{%- endcomment -%}
 
 <section class="section breadcrumbs-section" {{ section.shopify_attributes }}>
   <div class="container">

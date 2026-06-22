@@ -75,7 +75,7 @@
         </a>
       {%- endif -%}
 
-      <a href="{{ routes.cart_url }}" class="cart-btn" aria-label="Cart, {{ cart.item_count }} items" data-cart-count-wrap>
+      <a href="{{ routes.cart_url }}" class="cart-btn" aria-label="Cart, {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}" data-cart-count-wrap>
         {% render 'icon', icon: 'cart' %}
         <span>Cart (<span data-cart-count>{{ cart.item_count }}</span>)</span>
       </a>

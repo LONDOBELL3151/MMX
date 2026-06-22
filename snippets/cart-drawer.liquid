@@ -32,11 +32,11 @@
               <div class="cart-drawer__price">{{ item.final_line_price | money }}</div>
             </div>
             <div class="cart-drawer__qty">
-              <button data-qty="dec" data-line="{{ forloop.index }}">{% render 'icon', icon: 'minus' %}</button>
+              <button type="button" data-qty="dec" data-line="{{ forloop.index }}">{% render 'icon', icon: 'minus' %}</button>
               <input type="number" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}" data-cart-qty>
-              <button data-qty="inc" data-line="{{ forloop.index }}">{% render 'icon', icon: 'plus' %}</button>
+              <button type="button" data-qty="inc" data-line="{{ forloop.index }}">{% render 'icon', icon: 'plus' %}</button>
             </div>
-            <button class="cart-drawer__remove" data-remove="{{ forloop.index }}" aria-label="Remove">{% render 'icon', icon: 'trash' %}</button>
+            <button type="button" class="cart-drawer__remove" data-remove="{{ forloop.index }}" aria-label="Remove">{% render 'icon', icon: 'trash' %}</button>
           </div>
         {%- endfor -%}
       </div>

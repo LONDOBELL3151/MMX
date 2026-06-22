@@ -5,7 +5,47 @@
 <section class="main-collection" id="MainCollection" {{ section.shopify_attributes }}>
   <div class="container collection-grid">
     <div class="main-collection__sidebar">
-      {% section 'facets' %}
+      {%- comment -%}
+        Facets UI inlined here. {% section %} cannot be nested inside a
+        section, so the original {% section 'facets' %} would error.
+        For merchant-configurable filter groups, the standalone
+        sections/facets.liquid is still available to mount from
+        templates/collection.json as a top-level section.
+      {%- endcomment -%}
+      <aside class="facets" id="Facets">
+        <form id="FacetFiltersForm" class="facets__form" action="{{ collection.url }}" method="get">
+          <div class="facets__clear">
+            <a href="{{ collection.url }}">Clear all</a>
+          </div>
+
+          <details class="facets__group" open>
+            <summary class="facets__title">Tags</summary>
+            <ul class="facets__list">
+              {%- for tag in collection.all_tags limit: 50 -%}
+                <li>
+                  <label>
+                    <input type="checkbox" name="filter.p.tag" value="{{ tag | handleize }}" {% if current_tags contains tag %}checked{% endif %}>
+                    <span>{{ tag }}</span>
+                  </label>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+
+          <details class="facets__group">
+            <summary class="facets__title">Price</summary>
+            <div class="facets__price">
+              <input type="number" name="filter.v.price.gte" placeholder="Min $" value="{{ min_price | default: '' }}">
+              <span>—</span>
+              <input type="number" name="filter.v.price.lte" placeholder="Max $" value="{{ max_price | default: '' }}">
+              <button type="submit" class="btn btn--sm">Apply</button>
+            </div>
+          </details>
+        </form>
+        <div class="facets__mobile-actions">
+          <button type="button" class="btn btn--primary btn--block" data-mobile-filters-close>Apply filters</button>
+        </div>
+      </aside>
     </div>
 
     <div class="main-collection__main">

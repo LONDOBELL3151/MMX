@@ -111,11 +111,21 @@
     mobileFilterCloseEls.forEach((el) => el.addEventListener('click', () => facets.classList.remove('is-mobile-open')));
   }
 
-  // Auto-submit filter form on checkbox change. Each checkbox is one
-  // filter value, so toggling a tag should immediately update results.
+  // Filter UI: on checkbox toggle, navigate to the collection URL with
+  // selected tags appended as path segments (/collections/handle/tag1+tag2).
+  // Shopify recognizes path-based tag filters; query-string filter.p.tag
+  // is not honored on collection pages. Price range still uses native
+  // form submit (filter.v.price.gte is a valid query-param filter).
   if (facetForm) {
+    const base = facetForm.getAttribute('action') || window.location.pathname;
     facetForm.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
-      cb.addEventListener('change', () => facetForm.submit());
+      cb.addEventListener('change', () => {
+        const tags = Array.from(facetForm.querySelectorAll('input[type="checkbox"]:checked'))
+          .map((c) => c.value)
+          .filter(Boolean)
+          .join('+');
+        window.location.href = tags ? `${base.replace(/\/$/, '')}/${tags}` : base;
+      });
     });
   }
 

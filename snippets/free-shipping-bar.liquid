@@ -8,6 +8,7 @@
   if remaining < 0
     assign remaining = 0
   endif
+  assign amount_placeholder = '{amount}'
 -%}
 
 <div class="ship-bar" data-threshold="{{ threshold }}" data-current="{{ cart.total_price }}">
@@ -17,7 +18,8 @@
       <div class="ship-bar__text">
         {%- assign msg = settings.free_shipping_message -%}
         {%- if msg contains '{amount}' -%}
-          {{ msg | split: '{amount}' | first }}<strong>{{ remaining | money }}</strong>{{ msg | split: '{amount}' | last }}
+          {%- assign msg_parts = msg | split: amount_placeholder -%}
+          {{ msg_parts.first }}<strong>{{ remaining | money }}</strong>{{ msg_parts.last }}
         {%- else -%}
           {{ msg }}
         {%- endif -%}

@@ -539,6 +539,24 @@
 @media (max-width:560px){.blog-grid{grid-template-columns:1fr}}
 .blog-empty{text-align:center;padding:64px 24px;color:var(--color-text-soft)}
 
+/* ===== Blog feed (homepage module) ===== */
+.section--blog-feed .section__head--split{text-align:left;max-width:none;margin:0 auto 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.section--blog-feed .section__head-copy{flex:1 1 480px;min-width:0}
+.section--blog-feed .section__head h2{font-size:clamp(36px,5vw,72px);margin:0 0 12px}
+.section--blog-feed .section__head h2 em{font-style:normal;color:var(--color-accent)}
+.section--blog-feed .section__head .section__sub{margin:0;max-width:520px}
+.section--blog-feed .blog-grid{margin-top:0}
+@media (max-width:720px){.section--blog-feed .blog-grid{grid-template-columns:1fr;gap:20px}}
+
+.blog-cta{margin-top:48px;background:var(--color-primary);color:#fff;border-radius:var(--radius-lg);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.blog-cta__title{font-family:var(--font-display);font-size:clamp(22px,3vw,32px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;line-height:1;margin:0;color:#fff}
+.blog-cta__title em{font-style:normal;color:var(--color-accent)}
+.blog-cta__sub{font-size:14px;color:rgba(255,255,255,.7);margin:6px 0 0;max-width:520px}
+.blog-cta__btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--color-accent);color:var(--color-primary);font-family:var(--font-display);font-weight:900;font-size:14px;letter-spacing:.04em;text-transform:uppercase;border-radius:var(--radius-md);border:2px solid var(--color-accent);transition:var(--transition);white-space:nowrap}
+.blog-cta__btn:hover{background:#FFD340;border-color:#FFD340;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.blog-cta__btn svg{width:18px;height:18px}
+@media (max-width:560px){.blog-cta{padding:24px;flex-direction:column;align-items:flex-start;text-align:left}.blog-cta__btn{width:100%;justify-content:center}}
+
 /* ===== Page hero ===== */
 .page-hero{padding:96px 0 64px;text-align:center;background:var(--color-accent);color:var(--color-primary)}
 .page-hero__inner{max-width:800px;margin:0 auto}

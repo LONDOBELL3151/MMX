@@ -259,6 +259,22 @@
         "cta_url": ""
       }
     },
+    "blog_feed_YdCx8h": {
+      "type": "blog-feed",
+      "name": "Blog feed (homepage)",
+      "settings": {
+        "heading": "Read the journal.",
+        "subheading": "Buying guides, maintenance tips, and family adventures - written by riders who actually own a MaxFoot.",
+        "see_all_url": "",
+        "see_all_text": "See all articles",
+        "blog": "news",
+        "posts_count": 3,
+        "cta_title": "Binge the whole journal.",
+        "cta_sub": "60+ articles on buying, riding, and maintaining your MaxFoot. Updated weekly.",
+        "cta_button_text": "Visit the journal",
+        "cta_button_url": ""
+      }
+    },
     "riders": {
       "type": "rider-testimonials",
       "blocks": {
@@ -377,6 +393,7 @@
     "why",
     "press",
     "gallery_ecA7tC",
+    "blog_feed_YdCx8h",
     "riders",
     "faq",
     "cta",

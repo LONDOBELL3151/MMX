@@ -3,7 +3,7 @@
   assign height_class = 'hero--' | append: s.height
 -%}
 
-<section class="hero {{ height_class }}" aria-label="Hero" {{ section.shopify_attributes }}>
+<section class="hero {{ height_class }}" aria-label="Hero" {{ section.shopify_attributes }} style="background: {{ s.bg_color | default: 'transparent' }}">
   <div class="hero__bg">
     {%- if s.image != blank -%}
       <img src="{{ s.image | image_url: width: 1600 }}"

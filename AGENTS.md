@@ -49,6 +49,13 @@
 - 但本地脚本**不够** — Shopify 服务端还有 URL/em-dash/`{% schema %}` 格式等额外检查
 - 部署后必须让用户**在 Shopify 后台 pull + customize** 实测确认
 
+## 工作流硬性要求(2026-06-23)
+- **任何对 maxfoot-theme/ 的代码改动,改完必须 `git add` + `git commit` + `git push origin main`**
+- 用户(Mavis 自己)有过失忆前科,session 修过之后不知道改了什么 — commit 是唯一的真实记录
+- push 后告诉用户:commit hash + 改动文件 + 让用户在 Shopify 后台 hard refresh 编辑器验证
+- **不要**只改不 commit / 只 commit 不 push — 半截活是事故源头
+- 例外:`AGENTS.md` 自身的更新、临时调试文件(`.bak`、`.log` 等)不需要 commit
+
 ### 救命参考
 - Shopify Dawn 主题源码 = 黄金标准: https://github.com/Shopify/dawn
   - `sections/collapsible-content.liquid` — FAQ/accordion 参考

@@ -24,7 +24,6 @@
         "show_urgency": true,
         "urgency_text": "Ships from US warehouse - free 2-day in 48 states",
         "height": "medium",
-        "image_position": "right",
         "bg_color": "#ffffff"
       }
     },
@@ -186,6 +185,80 @@
         "text_color": "#121212"
       }
     },
+    "gallery_ecA7tC": {
+      "type": "gallery",
+      "blocks": {
+        "photo_nfLBi8": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/goal.jpg",
+            "location": "Sedona, Arizona",
+            "handle": "@carol.h",
+            "bike_model": "MF-30 Neptune Blue · 412 mi",
+            "link": ""
+          }
+        },
+        "photo_whLtem": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/popup_57ac1ae7-f8f2-442e-9698-597ba01340e1.jpg",
+            "location": "Half Moon Bay, CA",
+            "handle": "@the_lin_family",
+            "bike_model": "MF-33",
+            "link": ""
+          }
+        },
+        "photo_nr3aH3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/MF-25-750x1080_f8cef4db-acf7-45ed-8582-6ddba808d996.jpg",
+            "location": "Portland, OR",
+            "handle": "@jeanl_64",
+            "bike_model": "MF-30 · 700 mi",
+            "link": ""
+          }
+        },
+        "photo_FLwczA": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/Larry-Lyola_Olds_Ross2_5dfdff62-8294-4010-91f8-43f96c819799.webp",
+            "location": "Tampa, FL",
+            "handle": "@gary.s71",
+            "bike_model": "MF-25",
+            "link": ""
+          }
+        },
+        "photo_PLbVBJ": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_uqoh18uqoh18uqoh_621cade7-14f8-4960-9b9c-93866a183ca0.png",
+            "location": "Austin, TX",
+            "handle": "@maria_kt",
+            "bike_model": "MF-30",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "photo_nfLBi8",
+        "photo_whLtem",
+        "photo_nr3aH3",
+        "photo_FLwczA",
+        "photo_PLbVBJ"
+      ],
+      "name": "Gallery (MaxFootLife)",
+      "settings": {
+        "heading": "Out there with MaxFoot.",
+        "subheading": "Real rides from 50,000+ American families — yours could be next. Tag @maxfootbike or use #MaxFootLife to be featured.",
+        "badge_text": "Featured · #MaxFootLife",
+        "instagram_url": "",
+        "instagram_label": "Follow @maxfootbike",
+        "cta_title": "Share your ride home.",
+        "cta_sub": "Three of our favorites every month get a $250 MaxFoot credit + featured on the homepage.",
+        "cta_button": "Submit your photo",
+        "cta_url": ""
+      }
+    },
     "riders": {
       "type": "rider-testimonials",
       "blocks": {
@@ -303,6 +376,7 @@
     "lineup",
     "why",
     "press",
+    "gallery_ecA7tC",
     "riders",
     "faq",
     "cta",

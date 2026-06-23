@@ -68,6 +68,10 @@
     <svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 7h14l-2 12H7L5 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
   {%- when 'helmet' -%}
     <svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 14a9 9 0 0 1 18 0v3H3v-3z"/><path d="M8 17v2M12 17v3M16 17v2"/></svg>
+  {%- when 'pin' -%}
+    <svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+  {%- when 'arrow-down' -%}
+    <svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="6,13 12,19 18,13"/></svg>
   {%- else -%}
     <span class="icon-fallback">[{{ icon }}]</span>
 {%- endcase -%}

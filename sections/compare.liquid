@@ -66,7 +66,7 @@
                       {%- for tag in p.tags -%}
                         {%- assign tag_downcase = tag | downcase -%}
                         {%- assign prefix_downcase = spec.tag_prefix | downcase -%}
-                        {%- if tag_downcase starts_with prefix_downcase -%}
+                        {%- if tag_downcase | starts_with: prefix_downcase -%}
                           {%- comment -%}tag like 'range_60mi' -> split on _ after prefix{%- endcomment -%}
                           {%- assign after_prefix = tag | remove_first: spec.tag_prefix -%}
                           {%- assign after_prefix = after_prefix | lstrip -%}

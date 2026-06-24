@@ -995,3 +995,91 @@
   .gallery-cta__btn{width:100%;justify-content:center}
 }
 
+
+
+/* ============================================================
+   MMX — Product PDP gallery (2026-06-24)
+   Layout: 主图方 + 下方缩略图横向滚动
+   Liquid 渲染在 snippets/product-media.liquid (line 1-35)
+   JS 切换在 maxfoot.js (line 185-197) — 只缺 CSS
+   ============================================================ */
+
+/* 主图区 */
+.product__media{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  background:var(--color-bg-soft);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+.product__media img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  transition:opacity .25s ease;
+}
+
+/* 缩略图区 — 默认就是横向滚动，desktop 与 mobile 同一套 */
+.product-thumbs{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:10px;
+  margin-top:12px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.product-thumbs::-webkit-scrollbar{display:none}
+
+/* 单个缩略图 */
+.product-thumb{
+  flex:0 0 auto;
+  width:84px;
+  height:84px;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  border:2px solid transparent;
+  background:var(--color-bg-soft);
+  cursor:pointer;
+  transition:border-color .2s ease,transform .2s ease,opacity .2s ease;
+  scroll-snap-align:start;
+  position:relative;
+}
+.product-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  pointer-events:none;
+  transition:transform .3s ease;
+}
+.product-thumb:hover{
+  opacity:.88;
+  transform:translateY(-1px);
+}
+.product-thumb:hover img{transform:scale(1.04)}
+.product-thumb.is-active{
+  border-color:var(--color-accent);
+  opacity:1;
+}
+.product-thumb.is-active::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:calc(var(--radius-md) - 2px);
+  pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(18,18,18,.04);
+}
+
+/* 最小主图（如果只有1张图，不需要缩略图，但Liquid不输出 .product-thumbs，这里不需要额外样式）*/
+
+/* 高对比度模式下加深边框 */
+@media (prefers-contrast:more){
+  .product-thumb{border-color:var(--color-border)}
+  .product-thumb.is-active{border-color:var(--color-accent-dark)}
+}

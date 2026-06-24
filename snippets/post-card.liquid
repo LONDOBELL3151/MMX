@@ -1,3 +1,14 @@
+{%- comment -%} DEBUG: image diagnostic (REMOVE AFTER) {%- endcomment -%}
+{%- if post.image -%}
+  <div style="position:fixed;top:0;left:0;background:yellow;color:black;padding:8px;z-index:99999;font-size:11px;font-family:monospace;max-width:100%;word-break:break-all;">
+    [post-card] post.id={{ post.id }} | image=YES | src={{ post.image | image_url: width: 800 }} | w={{ post.image.width }} h={{ post.image.height }} | alt={{ post.image.alt }}
+  </div>
+{%- else -%}
+  <div style="position:fixed;top:0;left:0;background:red;color:white;padding:8px;z-index:99999;font-size:11px;font-family:monospace;max-width:100%;word-break:break-all;">
+    [post-card] post.id={{ post.id }} | image=NO (post.image is nil) | url={{ post.url }} | title={{ post.title }}
+  </div>
+{%- endif -%}
+
 <article class="post-card{% if post.tags contains 'featured' %} post-card--featured{% endif %}" data-post-id="{{ post.id }}">
   <a href="{{ post.url }}" class="post-card__link">
     <div class="post-card__media"{% if post.image %} style="background-image:url({{ post.image | image_url: width: 800 }})"{% endif %}>

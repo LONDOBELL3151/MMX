@@ -34,16 +34,6 @@
       <p>{{ s.pull_quote }}</p>
     </div>
     {%- endif -%}
-
-    <div class="story-signoff">
-      <div class="story-signoff__avatar">{{ s.signoff_avatar | default: 'M' }}</div>
-      <div>
-        <div class="story-signoff__name">{{ s.signoff_name | default: 'The MaxFoot team' }}</div>
-        {%- if s.signoff_role != blank -%}
-          <div class="story-signoff__role">{{ s.signoff_role }}</div>
-        {%- endif -%}
-      </div>
-    </div>
   </div>
 </section>
 
@@ -111,31 +101,13 @@
     },
     {
       "type": "header",
-      "content": "Pull quote + Sign-off"
+      "content": "Pull quote"
     },
     {
       "type": "textarea",
       "id": "pull_quote",
       "label": "Pull quote",
       "default": "We didn't want to be a bike company. We wanted to be the reason someone rides again."
-    },
-    {
-      "type": "text",
-      "id": "signoff_name",
-      "label": "Sign-off name",
-      "default": "The MaxFoot team"
-    },
-    {
-      "type": "text",
-      "id": "signoff_avatar",
-      "label": "Sign-off avatar letter",
-      "default": "M"
-    },
-    {
-      "type": "textarea",
-      "id": "signoff_role",
-      "label": "Sign-off role",
-      "default": "A small group of riders, builders, and stubborn optimists · California, USA"
     }
   ],
   "presets": [

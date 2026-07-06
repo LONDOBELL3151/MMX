@@ -220,6 +220,8 @@
 .story-pull p{margin:0;font-family:var(--font-display);font-weight:700;font-size:32px;line-height:1.2;letter-spacing:-.01em;text-transform:uppercase;color:var(--color-primary)}
 .story-pull p::before{content:"\201C";color:var(--color-accent);font-size:48px;line-height:0;display:inline-block;margin-right:6px;vertical-align:-12px;font-family:Georgia,serif}
 .story-pull p::after{content:"\201D";color:var(--color-accent);font-size:48px;line-height:0;display:inline-block;margin-left:6px;vertical-align:-12px;font-family:Georgia,serif}
+.story-closer{margin-top:72px;display:flex;align-items:center;justify-content:center;gap:16px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-soft)}
+.story-closer::before,.story-closer::after{content:"";flex:0 0 32px;height:1px;background:var(--color-border)}
 @media (max-width:990px){
   .brand-story{padding:80px 0}
   .story-headline{margin-bottom:48px}
@@ -233,6 +235,7 @@
   .story-pull{margin-left:0;padding-left:20px}
   .story-pull p{font-size:20px}
   .story-pull p::before,.story-pull p::after{font-size:36px;vertical-align:-8px}
+  .story-closer{margin-top:48px;letter-spacing:.08em}
 }
 
 /* ===== CTA strip ===== */

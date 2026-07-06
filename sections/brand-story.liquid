@@ -34,6 +34,10 @@
       <p>{{ s.pull_quote }}</p>
     </div>
     {%- endif -%}
+
+    {%- if s.closer_text != blank -%}
+    <div class="story-closer">{{ s.closer_text }}</div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -108,6 +112,16 @@
       "id": "pull_quote",
       "label": "Pull quote",
       "default": "We didn't want to be a bike company. We wanted to be the reason someone rides again."
+    },
+    {
+      "type": "header",
+      "content": "Closer (small line under pull quote, optional)"
+    },
+    {
+      "type": "text",
+      "id": "closer_text",
+      "label": "Closer text",
+      "default": "Still built in California · Still here since 2016"
     }
   ],
   "presets": [
